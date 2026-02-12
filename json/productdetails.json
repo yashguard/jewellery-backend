@@ -1,0 +1,167 @@
+{
+    "status": "OK",
+    "request_id": "84df9a60-9341-46bd-85aa-f804a0a35154",
+    "data": {
+        "asin": "B07ZPKBL9V",
+        "product_title": "Apple iPhone 11, 64GB, (PRODUCT)RED - Fully Unlocked (Renewed)",
+        "product_price": "$224.00",
+        "product_original_price": null,
+        "product_price_max": "$187.90",
+        "currency": "USD",
+        "country": "US",
+        "product_star_rating": "4.3",
+        "product_num_ratings": 49603,
+        "product_url": "https://www.amazon.com/dp/B07ZPKBL9V",
+        "product_photo": "https://m.media-amazon.com/images/I/41iMRb9fHIL.jpg",
+        "product_num_offers": 69,
+        "product_availability": "In Stock",
+        "is_best_seller": false,
+        "is_amazon_choice": false,
+        "climate_pledge_friendly": true,
+        "sales_volume": "500+ bought in past month",
+        "about_product": [
+            "This phone is unlocked and compatible with any carrier of choice on GSM and CDMA networks (e.g. AT&T, T-Mobile, Sprint, Verizon, US Cellular, Cricket, Metro, Tracfone, Mint Mobile, etc.).",
+            "Tested for battery health and guaranteed to have a minimum battery capacity of 80%.",
+            "Successfully passed a full diagnostic test which ensures like-new functionality and removal of any prior-user personal information.",
+            "The device does not come with headphones or a SIM card. It does include a generic (Mfi certified) charger and charging cable.",
+            "Inspected and guaranteed to have minimal cosmetic damage, which is not noticeable when the device is held at arm's length."
+        ],
+        "product_description": "The iPhone 11 features a 6.1-inch LCD display that Apple calls a \"Liquid Retina HD Display.\" It features a 1792 x 828 resolution at 326ppi, a 1400:1 contrast ratio, 625 nits max brightness, True Tone support for adjusting the white balance to the ambient lighting, and wide color support for true-to-life colors. The iPhone 11 is available in six different colors: White, Black, Yellow, (PRODUCT)RED, Purple, and Green.",
+        "product_information": {
+            "Product Dimensions": "7 x 5 x 4 inches",
+            "Item Weight": "6.7 ounces",
+            "ASIN": "B07ZPKBL9V",
+            "Item model number": "iPhone 11",
+            "Batteries": "1 Lithium Ion batteries required. (included)",
+            "Best Sellers Rank": "#2 in Amazon Renewed (See Top 100 in Amazon Renewed)   #2 in Renewed Smartphones   #77 in Climate Pledge Friendly: Electronics",
+            "OS": "iOS 16",
+            "RAM": "4 GB",
+            "Wireless communication technologies": "Cellular",
+            "Connectivity technologies": "Bluetooth, Wi-Fi, USB, NFC",
+            "GPS": "True",
+            "Special features": "Built-In GPS",
+            "Other display features": "Wireless",
+            "Human Interface Input": "Touchscreen",
+            "Other camera features": "Front, Rear",
+            "Form Factor": "Smartphone",
+            "Color": "Red",
+            "Battery Power Rating": "3600",
+            "Whats in the box": "SIM Tray Ejector",
+            "Manufacturer": "Apple Computer",
+            "Date First Available": "October 28, 2019",
+            "Memory Storage Capacity": "64 GB",
+            "Standing screen display size": "6.1 Inches",
+            "Ram Memory Installed Size": "4 GB",
+            "Weight": "0.19 Kilograms"
+        },
+        "rating_distribution": {
+            "1": "10",
+            "2": "3",
+            "3": "5",
+            "4": "13",
+            "5": "69"
+        },
+        "product_photos": [
+            "https://m.media-amazon.com/images/I/41iMRb9fHIL.jpg",
+            "https://m.media-amazon.com/images/I/31sNDIGO6XL.jpg",
+            "https://m.media-amazon.com/images/I/41Sa-e84mbL.jpg",
+            "https://m.media-amazon.com/images/I/31bc2TNTaZL.jpg",
+            "https://m.media-amazon.com/images/I/41xNME9Y1AL.jpg",
+            "https://m.media-amazon.com/images/I/41IJ0fzfqoL.jpg",
+            "https://m.media-amazon.com/images/I/41t963ixLBL.jpg"
+        ],
+        "product_details": {
+            "Brand": "Apple",
+            "Model Name": "iPhone 11",
+            "Wireless Carrier": "Unlocked",
+            "Operating System": "iOS 16",
+            "Cellular Technology": "GSM, EDGE, UMTS, HSPA, HSDPA, CDMA, EV-DO, LTE",
+            "Memory Storage Capacity": "64 GB",
+            "Connectivity Technology": "Bluetooth, Wi-Fi, USB, NFC",
+            "Color": "Red",
+            "Screen Size": "6.1 Inches",
+            "Wireless network technology": "GSM, CDMA"
+        },
+        "customers_say": "Customers like the value and camera of the cellular phone. For example, they say it's a smart and cost-effective choice for those seeking a high-quality phone. That said, some complain about the sound quality. Opinions are mixed on battery life, scratch resistance, charging, quality, and security.",
+        "review_aspects": {
+            "Value": "POSITIVE",
+            "Camera": "POSITIVE",
+            "Quality": "MIXED",
+            "Battery life": "MIXED",
+            "Scratch resistance": "MIXED",
+            "Charging": "MIXED",
+            "Security": "MIXED",
+            "Sound quality": "NEGATIVE"
+        },
+        "category_path": [
+            {
+                "id": "2335752011",
+                "name": "Cell Phones & Accessories",
+                "link": "https://www.amazon.com/cell-phones-service-plans-accessories/b/ref=dp_bc_aui_C_1?ie=UTF8&node=2335752011"
+            },
+            {
+                "id": "7072561011",
+                "name": "Cell Phones",
+                "link": "https://www.amazon.com/cell-phone-devices/b/ref=dp_bc_aui_C_2?ie=UTF8&node=7072561011"
+            }
+        ],
+        "product_variations": {
+            "size": [
+                {
+                    "asin": "B07ZPKBL9V",
+                    "value": "64GB",
+                    "is_available": true
+                },
+                {
+                    "asin": "B07ZPKG5TG",
+                    "value": "128GB",
+                    "is_available": true
+                },
+                {
+                    "asin": "B07ZPJQ413",
+                    "value": "256GB",
+                    "is_available": true
+                }
+            ],
+            "color": [
+                {
+                    "asin": "B07ZPKN6YR",
+                    "value": "Black",
+                    "photo": "https://m.media-amazon.com/images/I/41GWVG6QBCL.jpg",
+                    "is_available": true
+                },
+                {
+                    "asin": "B07ZPHSHPG",
+                    "value": "Green",
+                    "photo": "https://m.media-amazon.com/images/I/41hCDxCdQ5L.jpg",
+                    "is_available": true
+                },
+                {
+                    "asin": "B07ZPKF8RG",
+                    "value": "Purple",
+                    "photo": "https://m.media-amazon.com/images/I/414bhOEGiuL.jpg",
+                    "is_available": true
+                },
+                {
+                    "asin": "B07ZPKBL9V",
+                    "value": "Red",
+                    "photo": "https://m.media-amazon.com/images/I/41iMRb9fHIL.jpg",
+                    "is_available": true
+                },
+                {
+                    "asin": "B07ZPJW2XH",
+                    "value": "White",
+                    "photo": "https://m.media-amazon.com/images/I/21fd2Lvn5NL.jpg",
+                    "is_available": true
+                },
+                {
+                    "asin": "B07ZPJ8YZ6",
+                    "value": "Yellow",
+                    "photo": "https://m.media-amazon.com/images/I/411vw3p0RKL.jpg",
+                    "is_available": true
+                }
+            ]
+        },
+        "is_prime": true
+    }
+}

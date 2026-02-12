@@ -1,0 +1,285 @@
+{
+    "event": {
+        "tournament": {
+            "name": "Eerste Divisie",
+            "slug": "eerste-divisie",
+            "category": {
+                "name": "Netherlands",
+                "slug": "netherlands",
+                "sport": {
+                    "name": "Football",
+                    "slug": "football",
+                    "id": 1
+                },
+                "id": 35,
+                "country": {
+                    "alpha2": "NL",
+                    "alpha3": "NLD",
+                    "name": "Netherlands"
+                },
+                "flag": "netherlands",
+                "alpha2": "NL"
+            },
+            "uniqueTournament": {
+                "name": "Eerste Divisie",
+                "slug": "eerste-divisie",
+                "primaryColorHex": "#b0192e",
+                "secondaryColorHex": "#a3a3a3",
+                "category": {
+                    "name": "Netherlands",
+                    "slug": "netherlands",
+                    "sport": {
+                        "name": "Football",
+                        "slug": "football",
+                        "id": 1
+                    },
+                    "id": 35,
+                    "country": {
+                        "alpha2": "NL",
+                        "alpha3": "NLD",
+                        "name": "Netherlands"
+                    },
+                    "flag": "netherlands",
+                    "alpha2": "NL"
+                },
+                "userCount": 29480,
+                "id": 131,
+                "country": { },
+                "crowdsourcingEnabled": false,
+                "hasPerformanceGraphFeature": true,
+                "hasEventPlayerStatistics": true,
+                "displayInverseHomeAwayTeams": false
+            },
+            "priority": 269,
+            "isGroup": false,
+            "competitionType": 1,
+            "isLive": false,
+            "id": 40
+        },
+        "season": {
+            "name": "Eerste Divisie 18/19",
+            "year": "18/19",
+            "editor": false,
+            "id": 17824
+        },
+        "roundInfo": {
+            "round": 9
+        },
+        "customId": "kjbsvjb",
+        "status": {
+            "code": 100,
+            "description": "Ended",
+            "type": "finished"
+        },
+        "winnerCode": 1,
+        "venue": {
+            "city": {
+                "name": "Rotterdam"
+            },
+            "stadium": {
+                "name": "Het Kasteel",
+                "capacity": 11000
+            },
+            "id": 656,
+            "country": {
+                "alpha2": "NL",
+                "alpha3": "NLD",
+                "name": "Netherlands"
+            }
+        },
+        "referee": {
+            "name": "Richard Martens",
+            "slug": "martens-richard",
+            "yellowCards": 535,
+            "redCards": 17,
+            "yellowRedCards": 13,
+            "games": 149,
+            "sport": {
+                "id": 1,
+                "slug": "football",
+                "name": "Football"
+            },
+            "id": 272661,
+            "country": {
+                "alpha2": "NL",
+                "alpha3": "NLD",
+                "name": "Netherlands"
+            }
+        },
+        "homeTeam": {
+            "name": "Sparta Rotterdam",
+            "slug": "sparta-rotterdam",
+            "shortName": "Sparta",
+            "gender": "M",
+            "sport": {
+                "name": "Football",
+                "slug": "football",
+                "id": 1
+            },
+            "userCount": 29282,
+            "manager": {
+                "name": "Jeroen Rijsdijk",
+                "slug": "jeroen-rijsdijk",
+                "shortName": "J. Rijsdijk",
+                "id": 789489,
+                "country": {
+                    "alpha2": "NL",
+                    "alpha3": "NLD",
+                    "name": "Netherlands"
+                }
+            },
+            "venue": {
+                "city": {
+                    "name": "Rotterdam"
+                },
+                "stadium": {
+                    "name": "Het Kasteel",
+                    "capacity": 11000
+                },
+                "id": 656,
+                "country": {
+                    "alpha2": "NL",
+                    "alpha3": "NLD",
+                    "name": "Netherlands"
+                }
+            },
+            "foundationDate": { },
+            "nameCode": "SPA",
+            "disabled": false,
+            "national": false,
+            "type": 0,
+            "id": 2960,
+            "country": {
+                "alpha2": "NL",
+                "alpha3": "NLD",
+                "name": "Netherlands"
+            },
+            "subTeams": [ ],
+            "fullName": "Sparta Rotterdam",
+            "teamColors": {
+                "primary": "#ffffff",
+                "secondary": "#ff0000",
+                "text": "#ff0000"
+            },
+            "foundationDateTimestamp": -2579817600,
+            "fieldTranslations": {
+                "nameTranslation": {
+                    "ar": "سبارتا روتيردام",
+                    "ru": "Спарта Роттердам"
+                },
+                "shortNameTranslation": { }
+            }
+        },
+        "awayTeam": {
+            "name": "SC Cambuur",
+            "slug": "sc-cambuur",
+            "shortName": "Cambuur",
+            "gender": "M",
+            "sport": {
+                "name": "Football",
+                "slug": "football",
+                "id": 1
+            },
+            "userCount": 21536,
+            "manager": {
+                "name": "Henk de Jong",
+                "slug": "henk-de-jong",
+                "shortName": "H. d. Jong",
+                "id": 139472,
+                "country": {
+                    "alpha2": "NL",
+                    "alpha3": "NLD",
+                    "name": "Netherlands"
+                }
+            },
+            "venue": {
+                "city": {
+                    "name": "Leeuwarden"
+                },
+                "stadium": {
+                    "name": "Cambuur-Stadion",
+                    "capacity": 10250
+                },
+                "id": 2340,
+                "country": {
+                    "alpha2": "NL",
+                    "alpha3": "NLD",
+                    "name": "Netherlands"
+                }
+            },
+            "foundationDate": { },
+            "nameCode": "CAM",
+            "disabled": false,
+            "national": false,
+            "type": 0,
+            "id": 2970,
+            "country": {
+                "alpha2": "NL",
+                "alpha3": "NLD",
+                "name": "Netherlands"
+            },
+            "subTeams": [ ],
+            "fullName": "SC Cambuur",
+            "teamColors": {
+                "primary": "#ffff00",
+                "secondary": "#0099ff",
+                "text": "#0099ff"
+            },
+            "foundationDateTimestamp": -174700800,
+            "fieldTranslations": {
+                "nameTranslation": {
+                    "ar": "كامبور SC",
+                    "ru": "Камбюр"
+                },
+                "shortNameTranslation": { }
+            }
+        },
+        "homeScore": {
+            "current": 3,
+            "display": 3,
+            "period1": 2,
+            "period2": 1,
+            "normaltime": 3
+        },
+        "awayScore": {
+            "current": 0,
+            "display": 0,
+            "period1": 0,
+            "period2": 0,
+            "normaltime": 0
+        },
+        "coverage": 1,
+        "time": {
+            "injuryTime1": 3,
+            "injuryTime2": 3,
+            "currentPeriodStartTimestamp": 1539526959
+        },
+        "changes": {
+            "changes": [
+                "status.code",
+                "status.description",
+                "status.type",
+                "homeScore.normaltime",
+                "awayScore.normaltime"
+            ],
+            "changeTimestamp": 1539526963
+        },
+        "hasGlobalHighlights": false,
+        "detailId": 6,
+        "crowdsourcingDataDisplayEnabled": false,
+        "id": 7881945,
+        "defaultPeriodCount": 2,
+        "defaultPeriodLength": 45,
+        "defaultOvertimeLength": 15,
+        "crowdsourcingEnabled": false,
+        "currentPeriodStartTimestamp": 1539526959,
+        "startTimestamp": 1539520200,
+        "slug": "sc-cambuur-sparta-rotterdam",
+        "finalResultOnly": false,
+        "feedLocked": false,
+        "fanRatingEvent": false,
+        "seasonStatisticsType": "overall",
+        "showTotoPromo": true,
+        "isEditor": false
+    }
+}

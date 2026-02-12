@@ -1,0 +1,99 @@
+{
+    "message": "Cart list retrieved successfully.",
+    "success": true,
+    "data": [
+        {
+            "_id": "6632174c646bbbafaf91ade5",
+            "user": {
+                "_id": "661e1533cb2fc1bed85de4b8"
+            },
+            "orderId": "6632174c646bb",
+            "items": [
+                {
+                    "_id": "6632174c646bbbafaf91ade5",
+                    "variant": {
+                        "_id": "662f48377f265fec1de31594",
+                        "files": [
+                            {
+                                "_id": "6630710171135b1309b007c2",
+                                "filename": "4e7a3009-681b-419e-aab1-2a7b398c4cf8.jpeg",
+                                "url": "https://guardianshot.blr1.digitaloceanspaces.com/jewellery/variants/4e7a3009-681b-419e-aab1-2a7b398c4cf8.jpeg"
+                            }
+                        ],
+                        "size": "7",
+                        "range": "47.90 mm",
+                        "grandTotal": 46540,
+                        "metalColor": "rose gold",
+                        "purity": "18 kt"
+                    },
+                    "quantity": 1
+                },
+                {
+                    "_id": "6632174c646bbbafaf91ade5",
+                    "product": {
+                        "_id": "662a230fecfd73b968bea2e1",
+                        "name": "Riadant Heart Diamond Ring",
+                        "files": [
+                            {
+                                "_id": "662a2ce5c459fc3678346646",
+                                "filename": "93efa8ee-0419-4980-83e4-714cff729b0e.jpg",
+                                "url": "https://guardianshot.blr1.digitaloceanspaces.com/jewellery/product/93efa8ee-0419-4980-83e4-714cff729b0e.jpg"
+                            },
+                            {
+                                "_id": "662a2ce5c459fc3678346647",
+                                "filename": "e9eeef10-4b81-4419-a655-6db841970482.png",
+                                "url": "https://guardianshot.blr1.digitaloceanspaces.com/jewellery/product/e9eeef10-4b81-4419-a655-6db841970482.png"
+                            },
+                            {
+                                "_id": "662a2ce6c459fc3678346648",
+                                "filename": "67ea4d8a-68ad-4ec8-81c4-35dd7aa4db8a.jpg",
+                                "url": "https://guardianshot.blr1.digitaloceanspaces.com/jewellery/product/67ea4d8a-68ad-4ec8-81c4-35dd7aa4db8a.jpg"
+                            }
+                        ],
+                        "metalColor": "rose gold",
+                        "purity": "18 kt",
+                        "grandTotal": 16100
+                    },
+                    "quantity": 1
+                },
+                {
+                    "_id": "6632174c646bbbafaf91ade5",
+                    "product": {
+                        "_id": "662a4581946f68f09e1e1d57",
+                        "name": "Riadant Heart Diamond Ring",
+                        "files": [ ],
+                        "metalColor": "rose gold",
+                        "purity": "18 kt",
+                        "grandTotal": 39424
+                    },
+                    "quantity": 1
+                },
+                {
+                    "_id": "6632174c646bbbafaf91ade5",
+                    "product": {
+                        "_id": "6631eb6934e834027398cce8",
+                        "name": "Riadant Heart Diamond Ring",
+                        "files": [ ],
+                        "metalColor": "rose gold",
+                        "purity": "18 kt",
+                        "grandTotal": 14255.2
+                    },
+                    "quantity": 5
+                }
+            ],
+            "firstName": "dharmi",
+            "lastName": "vaghasiya",
+            "phoneNumber": 7894561523,
+            "email": "vishwa.logicgoinfotech@gmail.com",
+            "addressLine1": "address",
+            "city": "surat",
+            "sameAsShippingAddress": true,
+            "addressType": "shipping",
+            "status": "pending",
+            "couponCode": "663239f0b24b64d5784715ef",
+            "couponDiscount": 15000,
+            "subTotal": 173340.00000000003,
+            "totalCost": 158340.00000000003
+        }
+    ]
+}

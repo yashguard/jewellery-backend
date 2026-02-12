@@ -1,0 +1,44 @@
+{
+    "success": true,
+    "message": "Orders fetched successfully",
+    "paginationData": {
+        "page": 1,
+        "totalPages": 1,
+        "totalItems": 4,
+        "limit": 5
+    },
+    "data": [
+        {
+            "_id": "65fc0e921d821401081c65dd",
+            "orderId": "order_NoyXtgEhwU4ooN",
+            "amount": 1,
+            "user": "65df19b4fa04a78b2e131298",
+            "status": "CANCELED"
+        },
+        {
+            "_id": "65e54de31d821401081c62a4",
+            "orderId": "order_Ni97ujrpCk5T9u",
+            "amount": 1,
+            "user": "65e54d4b1d821401081c628d",
+            "status": "REFUNDED",
+            "participant": "65e54e3d1d821401081c62a8",
+            "paymentId": "pay_Ni98WGyuCPE6S3"
+        },
+        {
+            "_id": "65df28ca1d821401081c5f0c",
+            "orderId": "order_NgIlvk110xRDtt",
+            "amount": 1,
+            "user": "65df28831d821401081c5ee1",
+            "status": "CANCELED"
+        },
+        {
+            "_id": "65df25f11d821401081c5e18",
+            "orderId": "order_NgIZ5wZ5ykrPyd",
+            "amount": 1,
+            "user": "65df24ec1d821401081c5dc9",
+            "status": "REFUNDED",
+            "participant": "65df26831d821401081c5e1c",
+            "paymentId": "pay_NgIaUwydvRuXrz"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "categories": [
+        {
+            "name": "Asia",
+            "slug": "asia",
+            "sport": {
+                "name": "Football",
+                "slug": "football",
+                "id": 1
+            },
+            "priority": 17,
+            "id": 1467,
+            "flag": "asia"
+        },
+        {
+            "name": "World",
+            "slug": "world",
+            "sport": {
+                "name": "Football",
+                "slug": "football",
+                "id": 1
+            },
+            "priority": 20,
+            "id": 1468,
+            "flag": "international"
+        },
+        {
+            "name": "North & Central America",
+            "slug": "north-central-america",
+            "sport": {
+                "name": "Football",
+                "slug": "football",
+                "id": 1
+            },
+            "priority": 15,
+            "id": 1469,
+            "flag": "north-and-central-america"
+        }
+    ]
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booked</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #c8bac8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            color: #1F1A5E;
+        }
+
+        th {
+            background-color: #eeebee;
+            color: #1F1A5E;
+        }
+
+        p {
+            margin: 20px 0;
+            color: #605D92;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="font-size: 30px; text-align: center; color: #1F1A5E; margin-bottom: 20px;">ALUKAS & CO</h1>
+        <h2 style="text-align: center; color: #1F1A5E; font-weight: 500;">Your Appointment is Booked!</h2>
+        <p style="font-weight: 600; color: #1F1A5E;">Dear {{name}},</p>
+        <p>We are pleased to inform you that your appointment has been successfully booked. Below are the details:</p>
+        <table>
+            <tr>
+                <th>Appointment Date</th>
+                <td>{{date}}</td>
+            </tr>
+            <tr>
+                <th>Appointment Time</th>
+                <td>{{time}}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>13-A, Vasant Kunj Bunglow, Near Kakdia Complex, Ghod Dod Road,Surat,395007</td>
+            </tr>
+            <tr>
+                <th>Store hours</th>
+                <td>11:00 A.M.- 08:00 P.M.</td>
+            </tr>
+        </table>
+        <p>Thank you for choosing our service. If you have any questions or need to make changes to your appointment,
+            please don't hesitate to contact us.</p>
+        <p>Best regards,<br />ALUKAS & CO</p>
+    </div>
+</body>
+
+</html>

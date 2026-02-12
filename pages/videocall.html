@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Video Call</title>
+    <style>
+        body,
+        h1,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333333;
+            text-align: center;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            color: #666666;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .status {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .signature {
+            margin-top: 20px;
+            border-top: 1px solid #cccccc;
+            padding-top: 15px;
+            font-size: 14px;
+            color: #666666;
+        }
+
+        .contact-info {
+            font-size: 14px;
+            color: #666666;
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            color: #1F1A5E;
+        }
+
+        th {
+            background-color: #eeebee;
+            color: #1F1A5E;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Video Call {{status}}</h1>
+        <p>Dear {{name}},</p>
+        <p>I hope this email finds you well. I would like to confirm that our video call to discuss the topic has been
+            scheduled as follows:</p>
+        <p><span class="status">Status: {{status}}</span></p>
+        <table>
+            <tr>
+                <th>Date</th>
+                <td>{{date}}</td>
+            </tr>
+            <tr>
+                <th>Time</th>
+                <td>{{time}}</td>
+            </tr>
+        </table>
+        <p style="margin-top: 20px;">If you have any questions or need to reschedule, please let me know as soon as
+            possible.</p>
+        <p>Looking forward to our discussion!</p>
+    </div>
+
+</body>
+
+</html>

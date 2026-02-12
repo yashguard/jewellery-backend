@@ -1,0 +1,387 @@
+{
+    "sku": "ABC123",
+    "category": "category_id",
+    "subCategory": "subcategory_id",
+    "admin": "admin_id",
+    "store": [ "store_id_1", "store_id_2" ],
+    "rating": 4.5,
+    "products": [
+        {
+            "metal": "gold",
+            "gender": "male",
+            "productType": "ring",
+            "images": "https://yourcdn.com/gold_image2.jpg",
+            "subImages": [
+                { "filename": "gold_subImage1.jpg" },
+                { "filename": "gold_subImage2.jpg" }
+            ],
+            "videos": [
+                { "videoFilename": "gold_video1.mp4" },
+                { "videoFilename": "gold_video2.mp4" }
+            ],
+            "title": "Gold Ring",
+            "shortDescription": "A beautiful gold ring",
+            "longDescription": "This is a stunning gold ring crafted with precision.",
+            "width": "10mm",
+            "height": "5mm",
+            "style": "classic",
+            "brand": "YourBrand",
+            "warranty": "1 year",
+            "manufacturerName": "Manufacturer",
+            "gstDescription": "GST included",
+            "taxDescription": "Tax applicable",
+            "productQuantity": 100,
+            "salesCount": 50,
+            "availableStock": 50,
+            "caratVariants": [
+                { "carat": "18K", "caratPrice": 1000, "caratDiscount": 50 },
+                { "carat": "24K", "caratPrice": 1500, "caratDiscount": 75 }
+            ],
+            "sizeVariants": [
+                { "size": "S", "sizePrice": 800, "sizeDiscount": 40 },
+                { "size": "M", "sizePrice": 900, "sizeDiscount": 45 }
+            ],
+            "gstAmount": 180,
+            "taxAmount": 225,
+            "productPrice": 2645,
+            "discountAmount": 115,
+            "totalPrice": 2755,
+            "grandTotal": 2755
+        },
+        {
+            "metal": "silver",
+            "gender": "unisex",
+            "productType": "bracelet",
+            "images": "https://yourcdn.com/gold_image2.jpg",
+            "subImages": [
+                { "filename": "silver_subImage1.jpg" },
+                { "filename": "silver_subImage2.jpg" }
+            ],
+            "videos": [
+                { "videoFilename": "silver_video1.mp4" },
+                { "videoFilename": "silver_video2.mp4" }
+            ],
+            "title": "Silver Bracelet",
+            "shortDescription": "An elegant silver bracelet",
+            "longDescription": "This is a beautifully crafted silver bracelet suitable for all occasions.",
+            "width": "8mm",
+            "height": "3mm",
+            "style": "modern",
+            "brand": "YourBrand",
+            "warranty": "2 years",
+            "manufacturerName": "Manufacturer",
+            "gstDescription": "GST included",
+            "taxDescription": "Tax applicable",
+            "productQuantity": 150,
+            "salesCount": 75,
+            "availableStock": 75,
+            "caratVariants": [ ],
+            "sizeVariants": [
+                { "size": "S", "sizePrice": 500, "sizeDiscount": 25 },
+                { "size": "M", "sizePrice": 600, "sizeDiscount": 30 }
+            ],
+            "gstAmount": 90,
+            "taxAmount": 112.5,
+            "productPrice": 1512.5,
+            "discountAmount": 0,
+            "totalPrice": 1602.5,
+            "grandTotal": 1602.5
+        }
+    ],
+    "similarProducts": [ "similar_product_id_1", "similar_product_id_2" ],
+    "inStock": true,
+    "isAvailable": true,
+    "createdAt": "2024-03-23T12:00:00.000Z",
+    "updatedAt": "2024-03-23T12:00:00.000Z",
+
+    "caratlane product": "1",
+
+
+    "id": 34787675,
+    "sku": "UR01011-YG0000",
+    "name": "Adler Gold Band for Men",
+    "size": "18",
+    "size_label": "Size",
+    "intl_size": "",
+    "qty": 1,
+    "inventory": 85,
+    "price": {
+        "mrp": 37155,
+        "formatted_mrp": "₹37,155",
+        "sale_price": 37155,
+        "formatted_sale_price": "₹37,155",
+        "discount": 0,
+        "formatted_discount": "₹0"
+    },
+    "service_items": [ ],
+    "thumb_image": "https://cdn.caratlane.com/media/catalog/product/cache/6/image/480x480/9df78eab33525d08d6e5fb8d27136e95/U/R/UR01011-YG0000_11_listfront.jpg",
+    "small_image": null,
+    "tah_available": false,
+    "shipping_date": "2024-04-23",
+    "expected_delivery_date": "25th Apr",
+    "desired_delivery_date": null,
+    "edd_min": "2024-04-25",
+    "edd_max": "2024-04-26",
+    "is_preferred": false,
+    "fdd": "25th Apr",
+    "preferred": [ ],
+    "shipping_text": "Today",
+    "max_qty_allowed": 10,
+    "out_of_stock": false,
+    "product_status": true,
+    "product_url": "jewellery/adler-gold-band-for-men-ur01011-yg0000.html",
+    "product_note": "",
+    "product_note_tooltip": null,
+    "enable_wishlist": true,
+    "erp_sku": "URI01011-YDU000-18",
+    "is_in_wishlist": false,
+    "allow_shipping": true,
+    "engravable": false,
+    "engraved_details": [ ],
+    "available_size": [
+        {
+            "size": "13",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "14",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "15",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "16",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "17",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "18",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "19",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "20",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "21",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "22",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "23",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "24",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "25",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "26",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "27",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "28",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "29",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        },
+        {
+            "size": "30",
+            "intl_size": "",
+            "price": {
+                "mrp": null,
+                "formatted_mrp": null,
+                "sale_price": null,
+                "formatted_sale_price": null,
+                "discount": null,
+                "formatted_discount": null
+            }
+        }
+    ],
+    "media": {
+        "cinemagraph_link": null,
+        "youtube_video_link": null,
+        "images": [
+            {
+                "front_image_url": "https://cdn1.caratlane.com/media/catalog/product/cache/6/image/850x850/9df78eab33525d08d6e5fb8d27136e95/U/R/UR01011-YG0000_1_lar.jpg",
+                "shipping_image_url": null,
+                "thumb_image_url": "https://cdn1.caratlane.com/media/catalog/product/cache/6/thumbnail/60x60/9df78eab33525d08d6e5fb8d27136e95/U/R/UR01011-YG0000_1_lar.jpg"
+            }
+        ]
+    },
+    "brand": "Caratlane",
+    "product_type": "Diamond",
+    "material": "Gold",
+    "metal": "Yellow",
+    "diamond_quality": "NA",
+    "purity": "18 KT",
+    "shipping_lead_time": null,
+    "cod_available": false,
+    "online_available": true,
+    "edd": "25th Apr",
+    "category": "Jewellery",
+    "type": "simple",
+    "emi": null,
+    "gift_wrapper": null,
+    "encircle_msg": null,
+    "tat_days_diff": 2,
+    "tat_hours_diff": 58
+}
