@@ -1,7 +1,7 @@
 import {
     appointmentStatusEnum,authProviderEnum,discountTypeEnum,paymentStatusEnum,serverEnums,addressTypeEnum,taxTypeEnum,
-    userRoleEnum,videoCallStatusEnum,discountAppliesOnEnumType,costTypeEnum,orderStatusEnum,aboutUsTypeEnum,mediaTypeEnum,
-    returnOrderStatusEnum
+    userRoleEnum,videoCallStatusEnum,discountAppliesOnEnumType,costTypeEnum,orderStatusEnum,aboutUsTypeEnum,connectionTypeEnum,
+    returnOrderStatusEnum,blogTypeEnum,homePageTypeEnum,paymentMethodEnum,genderTypeEnum
 } from "../../../config/enum.js";
 import {successResponse} from "../../../helper/apiResponse.js";
 
@@ -21,8 +21,12 @@ class controller {
             costTypeEnum: costTypeEnum,
             orderStatusEnum: orderStatusEnum,
             aboutUsTypeEnum: aboutUsTypeEnum,
-            mediaTypeEnum: mediaTypeEnum,
-            returnOrderStatusEnum: returnOrderStatusEnum
+            connectionTypeEnum: connectionTypeEnum,
+            returnOrderStatusEnum: returnOrderStatusEnum,
+            blogTypeEnum: blogTypeEnum,
+            homePageTypeEnum: homePageTypeEnum,
+            paymentMethodEnum: paymentMethodEnum,
+            genderTypeEnum: genderTypeEnum,
         };
         return successResponse({
             res,

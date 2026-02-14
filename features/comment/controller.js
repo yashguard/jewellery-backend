@@ -2,6 +2,7 @@ import {errorResponse,successResponse} from "../../helper/apiResponse.js";
 import {paginationDetails,paginationFun} from "../../helper/common.js";
 import BlogModel from "../master/blog/model.js";
 import CommentModel from "../comment/model.js";
+import mongoose from "mongoose";
 
 class controller {
     /**
@@ -43,14 +44,13 @@ class controller {
             const {id} = req.params;
             const {blogId} = req.query;
 
-            if (id) filter._id = id;
-            if (blogId) filter.blog = blogId;
+            if (id) filter._id = new mongoose.Types.ObjectId(id);
+            if (blogId) filter.blog = new mongoose.Types.ObjectId(blogId);
 
             const pagination = paginationFun(req.query);
             let count,paginationData;
 
             count = await CommentModel.countDocuments(filter);
-
             const result = await CommentModel.find(filter)
                 .skip(pagination.skip)
                 .limit(pagination.limit)

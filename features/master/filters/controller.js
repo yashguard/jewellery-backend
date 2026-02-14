@@ -49,7 +49,7 @@ class controller {
             const {category} = req.query;
 
             let filter = {};
-            if (id) filter._id = id;
+            if (id) filter._id = new mongoose.Types.ObjectId(id);
             if (category) filter.category = new mongoose.Types.ObjectId(category);
 
             const result = await FilterModel.aggregate([

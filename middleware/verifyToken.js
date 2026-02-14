@@ -3,6 +3,9 @@ import {config} from "../config/config.js";
 import AuthModel from "../features/authentication/model.js";
 import {validateResponse} from "../helper/apiResponse.js";
 
+/**
+ * Verify Token
+ */
 export const verifyToken = async (req,res,next) => {
   try {
     const token = req.headers.authorization;

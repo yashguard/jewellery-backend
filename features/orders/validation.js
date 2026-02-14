@@ -1,5 +1,5 @@
 import Joi from "joi";
-import {addressTypeEnum,orderStatusEnum} from "../../config/enum.js";
+import {addressTypeEnum,orderStatusEnum,paymentMethodEnum} from "../../config/enum.js";
 
 class validation {
     /**
@@ -9,8 +9,7 @@ class validation {
         body: Joi.object().keys({
             invoiceId: Joi.string(),
             shippingAddress: Joi.object().keys({
-                firstName: Joi.string().required(),
-                lastName: Joi.string().required(),
+                name: Joi.string().required(),
                 phoneNumber: Joi.number().required(),
                 email: Joi.string().email().required(),
                 addressLine1: Joi.string().required(),
@@ -23,8 +22,7 @@ class validation {
             sameAsShippingAddress: Joi.boolean().default(true),
             totalAmount: Joi.number(),
             billingAddress: Joi.object().keys({
-                firstName: Joi.string().required(),
-                lastName: Joi.string().required(),
+                name: Joi.string().required(),
                 phoneNumber: Joi.number().required(),
                 email: Joi.string().email().required(),
                 addressLine1: Joi.string().required(),
@@ -47,7 +45,17 @@ class validation {
     static updateStatus = {
         body: Joi.object().keys({
             status: Joi.string().valid(...Object.values(orderStatusEnum)),
+            isPaid: Joi.boolean(),
             deliveryDate: Joi.date()
+        })
+    };
+
+    /**
+     * Add payment method
+     */
+    static addPaymentMethod = {
+        body: Joi.object().keys({
+            paymentMethod: Joi.string().valid(...Object.values(paymentMethodEnum)).required(),
         })
     };
 }

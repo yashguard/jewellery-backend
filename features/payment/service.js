@@ -11,7 +11,13 @@ class Service {
             .skip(pagination.skip)
             .limit(pagination.limit)
             .sort({createdAt: -1})
-            .populate({path: "orderId"});
+            .populate({path: "orderId",select: "orderId"})
+            .populate({path: "customer",select: "username email phone customerId url"})
+            .select("amount paymentId status createdAt updatedAt");
+    };
+
+    static findStatus = async (paymentId) => {
+        return PaymentModel.findOne({paymentId: paymentId});
     };
 
     static refund = async (paymentId,userId) => {

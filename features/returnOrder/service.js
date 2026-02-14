@@ -15,6 +15,9 @@ class Services {
         return ReturnOrderModel.find(filter)
             .skip(pagination.skip)
             .limit(pagination.limit)
+            .populate({path: "manageBy",select: "username empId url email"})
+            .populate({path: "user",select: "username customerId url email"})
+            .populate({path: "orderId",select: "orderId invoiceId items totalAmount"})
             .sort({createdAt: -1});
     };
 

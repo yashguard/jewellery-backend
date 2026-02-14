@@ -1,6 +1,6 @@
-import PrivacyPolicyModel from "../privacyPolicy/model.js";
 import {errorResponse,successResponse} from "../../../helper/apiResponse.js";
 import Service from "../privacyPolicy/service.js";
+import mongoose from "mongoose";
 
 class controller {
     /**
@@ -8,8 +8,9 @@ class controller {
      */
     static create = async (req,res) => {
         try {
+            const userId = req.user._id;
             const {title,longDescription,shortDescription,type} = req.body;
-            const doc = {title,longDescription,shortDescription,type};
+            const doc = {title,longDescription,shortDescription,type,createdBy: userId};
             const result = await Service.create(doc);
             return successResponse({
                 res,
@@ -32,10 +33,11 @@ class controller {
     static get = async (req,res) => {
         try {
             const {id} = req.params;
-            const {type} = req.query;
+            const {type,createdBy} = req.query;
 
             let filter = {};
-            if (id) filter._id = id;
+            if (id) filter._id = new mongoose.Types.ObjectId(id);
+            if (createdBy) filter.createdBy = new mongoose.Types.ObjectId(createdBy);
             if (type) filter.type = {$regex: type,$options: "i"};
 
             const result = await Service.get(filter);
@@ -45,7 +47,6 @@ class controller {
                 data: result,
                 message: "Documents retrieved successfully."
             });
-
         } catch (error) {
             return errorResponse({
                 res,
@@ -61,6 +62,7 @@ class controller {
     static update = async (req,res) => {
         try {
             const {id} = req.params;
+            const userId = req.user._id;
             const {title,longDescription,shortDescription} = req.body;
 
             const find = await Service.findById(id);
@@ -68,7 +70,7 @@ class controller {
                 return errorResponse({res,statusCode: 404,error: Error("Document not found.")});
             }
 
-            const updateFields = {title,longDescription,shortDescription};
+            const updateFields = {title,longDescription,shortDescription,createdBy: userId};
             const result = await Service.update(id,updateFields);
             return successResponse({
                 res,

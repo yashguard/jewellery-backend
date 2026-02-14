@@ -12,25 +12,23 @@ class validation {
             manufacturerName: Joi.string().required(),
             files: Joi.array(),
             sku: Joi.string().required(),
-            category: Joi.when('subCategory',{
-                is: Joi.string().empty(''),
-                then: Joi.string().required(),
-                otherwise: Joi.string().optional()
-            }),
+            category: Joi.string(),
             subCategory: Joi.string().optional(),
+            createdBy: Joi.string(),
             shopFor: Joi.string().required(),
-            tag: Joi.string().required(), // best seller
+            tag: Joi.array(),
             material: Joi.string(),
+            label: Joi.string().allow(null),
             occasion: Joi.string(),
             collections: Joi.string(),
             giftType: Joi.string(),
             slug: Joi.string(),
             title: Joi.string().required(),
-            isDraft: Joi.boolean().default(true).required(),
+            isDraft: Joi.boolean().required(),
             hasVariant: Joi.boolean().required(),
-            isRing: Joi.boolean().default(false),
-            isFeatured: Joi.boolean().default(false),
-            availability: Joi.boolean().default(false),
+            isRing: Joi.boolean(),
+            isFeatured: Joi.boolean(),
+            availability: Joi.boolean(),
             metalColor: Joi.string().required(),
             purity: Joi.string().required(),
             weight: Joi.string(),
@@ -40,13 +38,14 @@ class validation {
             size: Joi.string(),
             range: Joi.string(),
             price: Joi.number(),
+            taxAmount: Joi.number(),
             grandTotal: Joi.number().default(0.00),
             subTotal: Joi.number().default(0.00),
             taxValue: Joi.number().default(0.00),
             cost: Joi.array().items(Joi.object({
                 ratePerGram: Joi.number(),
                 costWeight: Joi.number(),
-                costName: Joi.string().required(),
+                metal: Joi.string().required(),
                 amount: Joi.number(),
                 costDiscount: Joi.number().default(0),
                 saveCost: Joi.number().default(0),
@@ -63,11 +62,12 @@ class validation {
             })),
             discountValue: Joi.number().default(0),
             savedAmount: Joi.number().default(0),
-            discountType: Joi.string().valid(...Object.values(discountTypeEnum)),
+            discountType: Joi.string(),
             discountDescription: Joi.string(),
             quantity: Joi.number().required(),
             sales: Joi.number(),
             rating: Joi.number(),
+            expiresOn: Joi.date()
         })
     };
 
@@ -80,7 +80,8 @@ class validation {
             description: Joi.string(),
             manufacturerName: Joi.string(),
             files: Joi.array(),
-            tag: Joi.string(),
+            label: Joi.string(),
+            tag: Joi.array(),
             occasion: Joi.string(),
             shopFor: Joi.string(),
             material: Joi.string(),
@@ -92,6 +93,7 @@ class validation {
             metalColor: Joi.string(),
             purity: Joi.string(),
             weight: Joi.string(),
+            taxAmount: Joi.number(),
             length: Joi.string(),
             width: Joi.string(),
             height: Joi.string(),
@@ -109,7 +111,7 @@ class validation {
             cost: Joi.array().items(Joi.object({
                 ratePerGram: Joi.number(),
                 costWeight: Joi.number(),
-                costName: Joi.string().required(),
+                metal: Joi.string().required(),
                 amount: Joi.number(),
                 costDiscount: Joi.number().default(0),
                 saveCost: Joi.number().default(0),
@@ -126,11 +128,12 @@ class validation {
             })),
             discountValue: Joi.number(),
             savedAmount: Joi.number(),
-            discountType: Joi.string().valid(...Object.values(discountTypeEnum)),
+            discountType: Joi.string(),
             discountDescription: Joi.string(),
             quantity: Joi.number(),
             sales: Joi.number(),
             rating: Joi.number(),
+            expiresOn: Joi.date()
         })
     };
 
@@ -141,7 +144,7 @@ class validation {
         body: Joi.object().keys({
             ratePerGram: Joi.number().integer(),
             costWeight: Joi.number(),
-            costName: Joi.string(),
+            metal: Joi.string(),
             amount: Joi.number(),
             costDiscount: Joi.number(),
             saveCost: Joi.number(),

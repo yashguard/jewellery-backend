@@ -9,7 +9,8 @@ class validation {
             category: joi.string().required(),
             description: joi.string(),
             image: joi.string(),
-            slug: joi.string()
+            slug: joi.string(),
+            createdBy: joi.string(),
         })
     };
 
@@ -17,11 +18,14 @@ class validation {
     static update = {
         body: joi.object().keys({
             title: joi.string(),
+            type: joi.string(),
             description: joi.string(),
             title: joi.string(),
             image: joi.string(),
+            createdBy: joi.string(),
             slug: joi.string()
         })
     };
 }
+
 export default validation;

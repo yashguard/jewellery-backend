@@ -1,5 +1,5 @@
 import Joi from "joi";
-import {aboutUsTypeEnum,mediaTypeEnum} from "../../../config/enum.js";
+import {aboutUsTypeEnum,connectionTypeEnum} from "../../../config/enum.js";
 
 class validation {
     /**
@@ -9,11 +9,12 @@ class validation {
         body: Joi.object().keys({
             type: Joi.string().valid(...Object.values(aboutUsTypeEnum)).required(),
             file: Joi.string(),
+            createdBy: Joi.string(),
             name: Joi.string().required(),
             designation: Joi.string().required(),
             media: Joi.array().items(Joi.object({
                 link: Joi.string().required(),
-                mediaType: Joi.string().valid(...Object.values(mediaTypeEnum)).required(),
+                mediaType: Joi.string().valid(...Object.values(connectionTypeEnum)).required(),
             })),
         })
     };
@@ -24,6 +25,7 @@ class validation {
     static createPercentage = {
         body: Joi.object().keys({
             file: Joi.string(),
+            createdBy: Joi.string(),
             type: Joi.string().valid(...Object.values(aboutUsTypeEnum)).required(),
             description: Joi.string().required(),
             headTitle: Joi.string().required(),
@@ -41,6 +43,7 @@ class validation {
      */
     static update = {
         body: Joi.object().keys({
+            createdBy: Joi.string(),
             description: Joi.string(),
             headTitle: Joi.string(),
             file: Joi.string(),
@@ -48,7 +51,7 @@ class validation {
             designation: Joi.string(),
             media: Joi.array().items(Joi.object({
                 link: Joi.string().required(),
-                mediaType: Joi.string().valid(...Object.values(mediaTypeEnum)).required()
+                mediaType: Joi.string().valid(...Object.values(connectionTypeEnum)).required()
             })),
             scores: Joi.array().items(Joi.object({
                 scoreTitle: Joi.string().required(),
@@ -64,12 +67,13 @@ class validation {
      */
     static updateKey = {
         body: Joi.object().keys({
+            createdBy: Joi.string(),
             scoreTitle: Joi.string(),
             isProgress: Joi.boolean(),
             symbol: Joi.string(),
             number: Joi.number(),
             link: Joi.string(),
-            mediaType: Joi.string().valid(...Object.values(mediaTypeEnum))
+            mediaType: Joi.string().valid(...Object.values(connectionTypeEnum))
         })
     };
 
@@ -78,6 +82,7 @@ class validation {
      */
     static uploadVideo = {
         body: Joi.object().keys({
+            createdBy: Joi.string(),
             video: Joi.string().allow()
         })
     };

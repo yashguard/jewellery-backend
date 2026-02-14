@@ -5,6 +5,8 @@ import {errorResponse,successResponse} from "../../helper/apiResponse.js";
 import {orderStatusEnum} from "../../config/enum.js";
 import {sendMail} from "../../helper/email.js";
 import OrderModel from "./model.js";
+import AuthModel from "../authentication/model.js";
+import {paginationDetails,paginationFun} from "../../helper/common.js";
 
 class controller {
     /**
@@ -14,7 +16,7 @@ class controller {
         try {
             const {id} = req.params;
             const {
-                firstName,lastName,phoneNumber,email,addressLine1,addressLine2,postalCode,city,sameAsShippingAddress,
+                name,phoneNumber,email,addressLine1,addressLine2,postalCode,city,sameAsShippingAddress,
                 status,addressType,shippingAddress,billingAddress,state
             } = req.body;
 
@@ -23,23 +25,36 @@ class controller {
                 return errorResponse({
                     res,
                     statusCode: 404,
-                    error: Error("Order not found.")
+                    error: new Error("Order not found.")
                 });
             }
 
-            let expectedDeliveryDate = moment().add(4,'days');
-            if (sameAsShippingAddress === false && !billingAddress) {
+            let expectedDeliveryDate = moment().add(10,'days');
+            if (!sameAsShippingAddress && !billingAddress) {
                 return errorResponse({
                     res,
                     statusCode: 400,
-                    error: Error("Billing address is required.")
+                    error: new Error("Billing address is required.")
                 });
             }
 
+            let finalBillingAddress = billingAddress;
+            if (sameAsShippingAddress) {
+                finalBillingAddress = shippingAddress;
+            }
+
+            if (existingOrder.totalAmount > 500000) {
+                return errorResponse({
+                    res,
+                    statusCode: 400,
+                    error: new Error("The order amount should not be more than 5 lakh.")
+                });
+            }
             const doc = {
-                firstName,lastName,phoneNumber,email,addressLine1,addressLine2,postalCode,city,sameAsShippingAddress,
-                status,addressType,shippingAddress,billingAddress,expectedDeliveryDate,status,state
+                name,phoneNumber,email,addressLine1,addressLine2,postalCode,city,sameAsShippingAddress,
+                status,addressType,shippingAddress,billingAddress: finalBillingAddress,expectedDeliveryDate,state
             };
+
             const result = await Service.create(id,doc);
             return successResponse({
                 res,
@@ -62,17 +77,39 @@ class controller {
     static getOrder = async (req,res) => {
         try {
             const {id} = req.params;
-            const {user,orderId} = req.query;
+            const {user,orderId,search,status,createdAt,cart} = req.query;
+            const pagination = paginationFun(req.query);
+            let count;
 
             const filter = {};
-            if (id) filter._id = id;
+            if (id) filter._id = new mongoose.Types.ObjectId(id);;
             if (user) filter.user = new mongoose.Types.ObjectId(user);
-            if (orderId) filter.orderId = orderId;
+            if (cart) filter.cart = new mongoose.Types.ObjectId(cart);
+            if (orderId) filter.orderId = {$regex: new RegExp(`^${ orderId }$`,'i')};
+            if (status) filter.status = {$regex: new RegExp(`^${ status }$`,'i')};
+            if (createdAt) filter.createdAt = {$regex: new RegExp(`^${ createdAt }$`,'i')};
 
-            const result = await Service.get(filter);
+            if (search) {
+                filter.$or = [
+                    {orderId: {$regex: search,$options: "i"}},
+                    {description: {$regex: search,$options: "i"}},
+                    {type: {$regex: search,$options: "i"}},
+                    {status: {$regex: search,$options: "i"}},
+                ];
+            };
+
+            count = await OrderModel.countDocuments(filter);
+            const result = await Service.get(filter,pagination);
+            let paginationData = paginationDetails({
+                limit: pagination.limit,
+                page: req.query.page,
+                totalItems: count,
+            });
+
             return successResponse({
                 res,
                 statusCode: 200,
+                pagination: paginationData,
                 data: result,
                 message: "Order retrieved successfully."
             });
@@ -90,8 +127,9 @@ class controller {
      */
     static updateStatus = async (req,res) => {
         try {
+            const userId = req.user._id;
             const {id} = req.params;
-            const {status} = req.body;
+            const {status,isPaid} = req.body;
 
             const existingOrder = await Service.existingOrder(id);
             if (!existingOrder) {
@@ -102,39 +140,28 @@ class controller {
                 });
             }
 
-            let order = existingOrder.orderId;
-            let name = existingOrder.firstName;
-            let invoiceId = existingOrder.invoiceId;
-            let date = existingOrder.date;
-            let addressLine1 = existingOrder.shippingAddress.addressLine1;
-            let city = existingOrder.shippingAddress.city;
-            let state = existingOrder.shippingAddress.state;
-            let phone = existingOrder.shippingAddress.phoneNumber;
-            let email = existingOrder.shippingAddress.email;
-            let items = existingOrder.items;
-            let subTotal = existingOrder.subTotal;
-            let taxValue = existingOrder.taxValue;
-            let totalCost = existingOrder.totalCost;
-
             let deliveryDate;
+
+            const date = existingOrder.createdAt;
+            const day = String(date.getDate()).padStart(2,'0');
+            const month = String(date.getMonth() + 1).padStart(2,'0');
+            const year = date.getFullYear();
+            const convertDate = `${ day }/${ month }/${ year }`;
+            const findUser = await AuthModel.findById(existingOrder.user);
+            const name = findUser.username;
+            const order = existingOrder.orderId;
+
             if (status === orderStatusEnum.DELIVERED) {
                 await sendMail({
-                    to: existingOrder.shippingAddress.email,
+                    to: existingOrder.shippingAddress.email && existingOrder.billingAddress.email,
                     subject: `Your order is ${ status }.`,
-                    dynamicData: {name,order},
+                    dynamicData: {name,order,convertDate},
                     filename: "order.html",
                 });
                 deliveryDate = Date.now();
-
-                await sendMail({
-                    to: existingOrder.shippingAddress.email,
-                    subject: `Invoice`,
-                    dynamicData: {invoiceId,date,order,addressLine1,city,state,phone,email,items,subTotal,taxValue,totalCost},
-                    filename: "invoice.html",
-                });
             }
 
-            const doc = {status,deliveryDate};
+            const doc = {status,deliveryDate,sellBy: userId,isPaid};
             const result = await Service.updateStatus(id,doc);
             return successResponse({
                 res,
@@ -147,6 +174,39 @@ class controller {
                 res,
                 error,
                 funName: "order.updateStatus"
+            });
+        }
+    };
+
+    /**
+     * Add payment method
+     */
+    static addPaymentMethod = async (req,res) => {
+        try {
+            const {id} = req.params;
+            const {paymentMethod} = req.body;
+
+            const existingOrder = await OrderModel.findById(id);
+            if (!existingOrder) {
+                return errorResponse({
+                    res,
+                    statusCode: 404,
+                    error: Error("Order not found.")
+                });
+            }
+
+            const result = await OrderModel.findByIdAndUpdate(id,{$set: {paymentMethod}},{new: true});
+            return successResponse({
+                res,
+                statusCode: 201,
+                data: result,
+                message: "Payment method added successfully."
+            });
+        } catch (error) {
+            return errorResponse({
+                res,
+                error,
+                funName: "order.addPaymentMethod"
             });
         }
     };

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {aboutUsTypeEnum,mediaTypeEnum} from "../../../config/enum.js";
+import {aboutUsTypeEnum,connectionTypeEnum} from "../../../config/enum.js";
 
 /**ADMIN - about us schema */
 const mongooseSchema = new mongoose.Schema(
@@ -29,9 +29,13 @@ const mongooseSchema = new mongoose.Schema(
         designation: {
             type: String,
         },
+        createdBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "user"
+        },
         media: [ {
             link: String,
-            mediaType: {type: String,enum: Object.values(mediaTypeEnum),}
+            mediaType: {type: String,enum: Object.values(connectionTypeEnum),}
         } ]
     },
     {

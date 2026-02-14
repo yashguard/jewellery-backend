@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import {userRoleEnum,authProviderEnum} from "../../config/enum.js";
+import {userRoleEnum,authProviderEnum,connectionTypeEnum,genderTypeEnum} from "../../config/enum.js";
 
 const authSchema = new mongoose.Schema(
     {
@@ -11,7 +11,6 @@ const authSchema = new mongoose.Schema(
         email: {
             type: String,
             lowercase: true,
-            unique: true,
             trim: true,
         },
         password: {
@@ -20,16 +19,14 @@ const authSchema = new mongoose.Schema(
         },
         phone: {
             type: Number,
-            unique: true
         },
         url: {
-            type: String
+            type: String,
+            default: null
         },
         dob: {
-            type: Date
-        },
-        occupation: {
-            type: String
+            type: Date,
+            default: null
         },
         joiningDate: {
             type: Date
@@ -57,6 +54,43 @@ const authSchema = new mongoose.Schema(
             type: String,
             enum: Object.values(userRoleEnum),
             default: userRoleEnum.CUSTOMER
+        },
+        customerId: {
+            type: String,
+            default: null
+        },
+        empId: {
+            type: Number,
+            default: null
+        },
+        gender: {
+            type: String,
+            enum: Object.values(genderTypeEnum),
+            default: null
+        },
+        address: {
+            type: String,
+            default: null
+        },
+        gmail: {
+            type: String,
+            default: null
+        },
+        facebook: {
+            type: String,
+            default: null
+        },
+        instagram: {
+            type: String,
+            default: null
+        },
+        linkedin: {
+            type: String,
+            default: null
+        },
+        twitter: {
+            type: String,
+            default: null
         }
     },
     {

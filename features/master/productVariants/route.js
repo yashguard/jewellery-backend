@@ -11,6 +11,10 @@ const route = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({storage: storage});
 
+// ---------------
+// POST
+// ---------------
+
 route.post(
     "/",
     upload.array("files"),
@@ -22,6 +26,10 @@ route.post(
     validate(validation.create),
     controller.create
 );
+
+// ---------------
+// GET
+// ---------------
 
 route.get(
     "/details/:id?",
@@ -50,6 +58,10 @@ route.get(
     ]),
     controller.getByAdmin
 );
+
+// ---------------
+// PATCH
+// ---------------
 
 route.patch(
     "/:id",
@@ -85,6 +97,10 @@ route.patch(
     controller.updateAttribute
 );
 
+// ---------------
+// DELETE
+// ---------------
+
 route.delete(
     "/:id/attribute/:attributeId",
     verifyToken,
@@ -103,6 +119,16 @@ route.delete(
         userRoleEnum.PRODUCTMANAGER,
     ]),
     controller.removeCost
+);
+
+route.delete(
+    "/:id/file/:fileId",
+    verifyToken,
+    checkPermission([
+        userRoleEnum.ADMIN,
+        userRoleEnum.PRODUCTMANAGER,
+    ]),
+    controller.deleteSingleFile
 );
 
 export default route;

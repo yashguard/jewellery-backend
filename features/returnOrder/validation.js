@@ -10,7 +10,7 @@ class validation {
             orderId: Joi.string().required(),
             user: Joi.string(),
             reason: Joi.string().required(),
-            status: Joi.string().valid(...Object.values(returnOrderStatusEnum)),
+            status: Joi.string().valid(...Object.values(returnOrderStatusEnum.REQUESTED)),
         })
     };
 
@@ -20,6 +20,7 @@ class validation {
     static update = {
         body: Joi.object().keys({
             status: Joi.string().valid(...Object.values(returnOrderStatusEnum)),
+            manageBy: Joi.string(),
         })
     };
 }

@@ -58,13 +58,45 @@ class controller {
     };
 
     /**
+     * update status
+     */
+    static updateStatus = async (req,res) => {
+        try {
+            const {status} = req.body;
+            const {id} = req.params;
+
+            const existingContact = await Services.existingContact(id);
+            if (!existingContact) {
+                return errorResponse({
+                    res,
+                    error: Error("Contact not found."),
+                    statusCode: 404
+                });
+            }
+            const result = await Services.update(id,status);
+            return successResponse({
+                res,
+                statusCode: 200,
+                data: result,
+                message: "Contact status is updated."
+            });
+        } catch (error) {
+            return errorResponse({
+                res,
+                error,
+                funName: "contactUs.updateStatus"
+            });
+        }
+    };
+
+    /**
      * delete
      */
     static deleteContact = async (req,res) => {
         try {
             const {id} = req.params;
-            const find = await ContactUsModel.findById(id);
-            if (!find) {
+            const existingContact = await Services.existingContact(id);
+            if (!existingContact) {
                 return errorResponse({
                     res,
                     error: Error("Contact not found."),

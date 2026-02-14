@@ -9,7 +9,6 @@ const mongooseSchema = new mongoose.Schema(
         },
         title: {
             type: String,
-            unique: true
         },
         description: {
             type: String
@@ -22,7 +21,10 @@ const mongooseSchema = new mongoose.Schema(
         },
         slug: {
             type: String,
-            unique: true
+        },
+        createdBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "user"
         }
     },
     {

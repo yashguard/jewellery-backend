@@ -1,26 +1,44 @@
-import mongoose from "mongoose";
 import {errorResponse,successResponse} from "../../../helper/apiResponse.js";
 import {paginationDetails,paginationFun} from "../../../helper/common.js";
-import OrderModel from "../../orders/model.js";
+import Service from "../invoice/service.js";
 
 class controller {
-    /**Get invoice */
+    /**Get */
     static get = async (req,res) => {
         try {
             const {orderId} = req.query;
-
             let filter = {};
-            if (orderId) filter._id = new mongoose.Types.ObjectId(orderId);
+            if (orderId) filter.orderId = {$regex: new RegExp(`^${ orderId }$`,'i')};
+            const result = await Service.get(filter);
+            return successResponse({
+                res,
+                statusCode: 200,
+                data: result,
+                message: "Invoice fetched successfully."
+            });
+        } catch (error) {
+            return errorResponse({
+                res,
+                error,
+                funName: "invoice.get"
+            });
+        }
+    };
+
+    /**
+     * Get List
+     */
+    static getInvoiceList = async (req,res) => {
+        try {
+            const {orderId} = req.query;
+            let filter = {};
+            if (orderId) filter.orderId = {$regex: new RegExp(`^${ orderId }$`,'i')};
 
             const pagination = paginationFun(req.query);
             let count,paginationData;
 
-            count = await OrderModel.countDocuments(filter);
-
-            const result = await OrderModel.find(filter)
-                .skip(pagination.skip)
-                .limit(pagination.limit)
-                .sort({createdAt: -1});
+            count = await Service.getCount(filter);
+            const result = await Service.getInvoiceList(filter,pagination);
 
             paginationData = paginationDetails({
                 limit: pagination.limit,
@@ -39,7 +57,7 @@ class controller {
             return errorResponse({
                 res,
                 error,
-                funName: "invoice.get"
+                funName: "invoice.getInvoiceList"
             });
         }
     };

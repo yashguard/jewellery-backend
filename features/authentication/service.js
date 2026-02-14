@@ -21,7 +21,7 @@ class services {
      */
     static getAllUsers = async (filter,pagination) => {
         return AuthModel.find(filter)
-            .select('-password -otp -otpExpiration')
+            .select('username email phone authProvider url customerId')
             .skip(pagination.skip)
             .limit(pagination.limit)
             .sort({createdAt: -1});
@@ -35,7 +35,7 @@ class services {
             id,
             {$set: req.body,url: newUrl},
             {new: true}
-        ).select("-password -role -address -isVerified -isActive");
+        ).select("-password -role -isVerified -isActive");
     };
 
     /**
@@ -56,6 +56,17 @@ class services {
             {$set: doc},
             {new: true}
         ).select("-password");
+    };
+
+    /**
+     * Add connection
+     */
+    static addConnection = async (id,doc) => {
+        return AuthModel.findByIdAndUpdate(
+            id,
+            {$set: doc},
+            {new: true}
+        );
     };
 }
 

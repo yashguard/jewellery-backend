@@ -14,6 +14,7 @@ route.post(
     verifyToken,
     checkPermission([
         userRoleEnum.ADMIN,
+        userRoleEnum.MANAGER,
         userRoleEnum.PRODUCTMANAGER
     ]),
     validate(validation.create),
@@ -22,8 +23,20 @@ route.post(
 
 /**get coupon */
 route.get(
-    "/:id?",
+    "/get/:id?",
     controller.get
+);
+
+/**get coupon */
+route.get(
+    "/admin/:id?",
+    verifyToken,
+    checkPermission([
+        userRoleEnum.ADMIN,
+        userRoleEnum.MANAGER,
+        userRoleEnum.PRODUCTMANAGER
+    ]),
+    controller.getByAdmin
 );
 
 /**update coupon */
@@ -32,6 +45,7 @@ route.patch(
     verifyToken,
     checkPermission([
         userRoleEnum.ADMIN,
+        userRoleEnum.MANAGER,
         userRoleEnum.PRODUCTMANAGER
     ]),
     validate(validation.update),
@@ -44,6 +58,7 @@ route.delete(
     verifyToken,
     checkPermission([
         userRoleEnum.ADMIN,
+        userRoleEnum.MANAGER,
         userRoleEnum.PRODUCTMANAGER
     ]),
     controller.delete

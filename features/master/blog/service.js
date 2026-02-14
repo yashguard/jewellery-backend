@@ -15,7 +15,7 @@ class Services {
      */
     static get = async (filter,pagination) => {
         return BlogModel.find(filter)
-            .select("-html -video -slug")
+            .select("-html -slug")
             .skip(pagination.skip)
             .limit(pagination.limit)
             .sort({createdAt: -1});

@@ -11,9 +11,10 @@ const route = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({storage: storage});
 
-/**
- * add product
- */
+// ----------------
+// POST
+// ----------------
+
 route.post(
     "/",
     upload.array("files"),
@@ -26,25 +27,20 @@ route.post(
     controller.create
 );
 
-/**
- * get
- */
+// ----------------
+// GET
+// ----------------
+
 route.get(
     "/category/:id?",
     controller.getProduct
 );
 
-/**
- * get details
- */
 route.get(
     "/details/:id?",
     controller.getProductDetails
 );
 
-/**
- * get by admin
- */
 route.get(
     "/admin/:id?",
     verifyToken,
@@ -58,10 +54,11 @@ route.get(
     controller.getByAdmin
 );
 
-/**
- * update product
- * (add: cost / attributes / files)
- */
+// ----------------
+// PATCH
+// ----------------
+
+// add: cost / attributes / files
 route.patch(
     "/:id",
     upload.array("files"),
@@ -74,22 +71,7 @@ route.patch(
     controller.update
 );
 
-/**
- * delete single file
- */
-route.delete(
-    "/:id/file/:fileId",
-    verifyToken,
-    checkPermission([
-        userRoleEnum.ADMIN,
-        userRoleEnum.PRODUCTMANAGER,
-    ]),
-    controller.deleteSingleFile
-);
-
-/**
- * update single cost
- */
+// Update single cost
 route.patch(
     "/:id/cost/:costId",
     verifyToken,
@@ -101,9 +83,7 @@ route.patch(
     controller.updateCost
 );
 
-/**
- * update single attribute
- */
+// Update single attribute
 route.patch(
     "/:id/attribute/:attributeId",
     verifyToken,
@@ -115,9 +95,20 @@ route.patch(
     controller.updateAttribute
 );
 
-/**
- * remove single attribute
- */
+// ----------------
+// DELETE
+// ----------------
+
+route.delete(
+    "/:id/file/:fileId",
+    verifyToken,
+    checkPermission([
+        userRoleEnum.ADMIN,
+        userRoleEnum.PRODUCTMANAGER,
+    ]),
+    controller.deleteSingleFile
+);
+
 route.delete(
     "/:id/attribute/:attributeId",
     verifyToken,
@@ -128,9 +119,6 @@ route.delete(
     controller.removeAttribute
 );
 
-/**
- * remove single cost
- */
 route.delete(
     "/:id/cost/:costId",
     verifyToken,

@@ -13,6 +13,9 @@ const mailTransport = nodemailer.createTransport({
     },
 });
 
+/**
+ * Send mail function
+ */
 export const sendMail = async ({to,subject,dynamicData,filename}) => {
     let html = fs.readFileSync(path.join(process.cwd(),"pages",filename),
         "utf-8"

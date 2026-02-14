@@ -4,9 +4,6 @@ class Services {
     /**
      * create
      */
-    /**
-     * create
-     */
     static create = async (doc) => {
         return ContactUsModel.create(doc);
     };
@@ -20,6 +17,20 @@ class Services {
             .limit(pagination.limit)
             .skip(pagination.skip)
             .sort({createdAt: -1});
+    };
+
+    /**
+     * update
+     */
+    static update = async (id,status) => {
+        return ContactUsModel.findByIdAndUpdate(id,{$set: {status}},{new: true});
+    };
+
+    /**
+     * find contact
+     */
+    static existingContact = async (id) => {
+        return ContactUsModel.findById(id);
     };
 
     /**

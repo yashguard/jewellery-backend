@@ -5,7 +5,6 @@ const mongooseSchema = new mongoose.Schema(
     {
         title: {
             type: String,
-            unique: true
         },
         url: {
             type: String
@@ -13,12 +12,9 @@ const mongooseSchema = new mongoose.Schema(
         description: {
             type: String
         },
-        type: {
-            type: String
-        },
         subCategory: [ {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "subCategory"
+            ref: "subcategory"
         } ],
         filters: [ {
             type: mongoose.Schema.Types.ObjectId,
@@ -26,6 +22,10 @@ const mongooseSchema = new mongoose.Schema(
         } ],
         slug: {
             type: String,
+        },
+        createdBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "user"
         }
     },
     {

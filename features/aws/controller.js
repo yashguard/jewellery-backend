@@ -26,9 +26,11 @@ export const updateFile = async (req,findDoc,folderName) => {
         const originalName = req.file.originalname;
         const fileExt = originalName.split(".").pop();
         newFilename = `${ uuidv4() }.${ fileExt }`;
-        await deleteFile({
-            filename: findDoc.url,
-        });
+        if (findDoc && findDoc.url) {
+            await deleteFile({
+                filename: findDoc.url,
+            });
+        }
         await uploadFile({
             filename: `${ config.cloud.digitalocean.foldername }/${ folderName }/${ newFilename }`,
             file: imageBuffer,

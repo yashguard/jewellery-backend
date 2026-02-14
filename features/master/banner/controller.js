@@ -11,12 +11,14 @@ class controller {
      */
     static create = async (req,res) => {
         try {
+            const userId = req.user._id;
             const {title,description} = req.body;
             const uploadedImages = await uploadMultipleFiles(req,folderName);
 
             const doc = {
                 title,
                 description,
+                createdBy: userId,
                 files: uploadedImages.map((image) => ({urls: image.url})),
             };
 
@@ -64,6 +66,7 @@ class controller {
     static update = async (req,res) => {
         try {
             const {id} = req.params;
+            const userId = req.user._id;
             const {title,description} = req.body;
 
             const find = await BannerModel.findById(id);
@@ -78,7 +81,7 @@ class controller {
             const findDoc = await BannerModel.findById(id);
             let files = await updateMultipleFiles(req,findDoc,folderName);
 
-            const doc = {title,description,files: files};
+            const doc = {title,description,files: files,createdBy: userId,};
             const result = await Services.update(id,doc);
 
             return successResponse({

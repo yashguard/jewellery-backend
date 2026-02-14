@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low Stock Alert</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f6eff6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #1f1a5e;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .footer {
+            background-color: #f4f4f4;
+            color: #666666;
+            padding: 10px;
+            text-align: center;
+            border-top: 1px solid #dddddd;
+        }
+
+        .product-details {
+            margin: 20px 0;
+        }
+
+        .product-details h2 {
+            margin: 0;
+        }
+
+        .product-details p {
+            margin: 5px 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Low Stock Alert</h1>
+        </div>
+        <div class="content">
+            <p>Dear Product Manager,</p>
+            <p>This is a notification to inform you that the stock level for the following item is running low:</p>
+            <div class="product-details">
+                <h2>{{name}}</h2>
+                <p><strong>Current Quantity:</strong> {{quantity}}</p>
+                <p><strong>SKU:</strong> {{sku}}</p>
+            </div>
+            <p>Please restock this item as soon as possible to avoid running out of stock.</p>
+            <p>Thank you.</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 Your Company. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+
+</html>

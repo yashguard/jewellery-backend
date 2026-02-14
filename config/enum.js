@@ -38,7 +38,7 @@ export const authProviderEnum = {
 export const paymentStatusEnum = {
   PENDING: "pending",
   COMPLETED: "completed",
-  CANCELED: "canceled",
+  CANCELLED: "cancelled",
   FAILED: "failed",
   REFUNDED: "refunded",
   TIMEOUT: "timeout",
@@ -49,6 +49,13 @@ export const discountTypeEnum = {
   PERCENTAGE: "percentage"
 };
 
+export const videoCallStatusEnum = {
+  PENDING: "pending",
+  CONFIRM: "confirm",
+  CANCEL: "cancel",
+  COMPLETED: "completed"
+};
+
 export const discountAppliesOnEnumType = {
   SUB_TOTAL: "subTotal",
   TAX_VALUE: "taxValue"
@@ -57,14 +64,8 @@ export const discountAppliesOnEnumType = {
 export const costTypeEnum = {
   GOLD: "gold",
   DIAMOND: "diamond",
-  GEMSTONE: "gemstone"
-};
-
-export const videoCallStatusEnum = {
-  PENDING: "pending",
-  CONFIRM: "confirm",
-  CANCEL: "cancel",
-  COMPLETED: "completed"
+  GEMSTONE: "gemstone",
+  OTHER: "other"
 };
 
 export const orderStatusEnum = {
@@ -84,7 +85,8 @@ export const aboutUsTypeEnum = {
   SCORE: "score"
 };
 
-export const mediaTypeEnum = {
+export const connectionTypeEnum = {
+  MAIL: "mail",
   FACEBOOK: "facebook",
   LINKEDIN: "linkedIn",
   TWITTER_X: "twitter-x",
@@ -95,5 +97,35 @@ export const returnOrderStatusEnum = {
   REQUESTED: "requested",
   PROCESSING: "processing",
   COMPLETED: "completed",
+  REJECTED: "rejected"
+};
+
+export const contactStatusEnum = {
+  PENDING: "pending",
+  COMPLETED: "completed",
   CANCELLED: "cancelled"
+};
+
+export const blogTypeEnum = {
+  IMAGE: "image",
+  VIDEO: "video"
+};
+
+export const homePageTypeEnum = {
+  GIFT: "gift",
+  BANNER: "banner",
+  OVERVIEW_BANNER: "overviewBanner",
+  INSTAGRAM: "instagram",
+  COLLECTIONS: "collections",
+  COMMUNITY: "community"
+};
+
+export const paymentMethodEnum = {
+  CARD: "card",
+  ONLINE: "online"
+};
+
+export const genderTypeEnum = {
+  MALE: "male",
+  FEMALE: "female"
 };

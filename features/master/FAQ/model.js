@@ -3,15 +3,9 @@ import mongoose from "mongoose";
 /**ADMIN - FAQ schema */
 const mongooseSchema = new mongoose.Schema(
     {
-        question: {
-            type: String
-        },
-        answer: {
-            type: String
-        },
-        type: {
-            type: String,
-        }
+        question: {type: String},
+        answer: {type: String},
+        type: {type: String}
     },
     {
         timestamps: true,

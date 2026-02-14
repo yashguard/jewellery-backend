@@ -7,8 +7,8 @@
     <title>Appointment Booked</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #c8bac8;
+            font-family: sans-serif;
+            background-color: #f6eff6;
             margin: 0;
             padding: 0;
         }
@@ -16,10 +16,13 @@
         .container {
             max-width: 600px;
             margin: 20px auto;
-            padding: 20px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .p-20 {
+            padding: 10px 20px;
         }
 
         table {
@@ -31,34 +34,59 @@
         td {
             padding: 10px;
             border-bottom: 1px solid #ddd;
+            border-top: 1px solid #ddd;
             color: #1F1A5E;
+            line-height: 1.5;
         }
 
         th {
-            background-color: #eeebee;
+            width: 20%;
+            background-color: #f4f4f4;
+            border-right: 1px solid #ddd;
             color: #1F1A5E;
         }
 
+        .header {
+            background-color: #1f1a5e;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
         p {
-            margin: 20px 0;
             color: #605D92;
+            line-height: 1.5;
+        }
+
+        .footer {
+            background-color: #f4f4f4;
+            color: #666666;
+            padding: 10px;
+            text-align: center;
+            border-top: 1px solid #dddddd;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1 style="font-size: 30px; text-align: center; color: #1F1A5E; margin-bottom: 20px;">ALUKAS & CO</h1>
+        <div class="header">
+            <h1>ALUKAS & CO</h1>
+        </div>
         <h2 style="text-align: center; color: #1F1A5E; font-weight: 500;">Your Appointment is Booked!</h2>
-        <p style="font-weight: 600; color: #1F1A5E;">Dear {{name}},</p>
-        <p>We are pleased to inform you that your appointment has been successfully booked. Below are the details:</p>
+        <div class="p-20">
+            <p style="font-weight: 600; color: #1F1A5E;">Dear {{name}},</p>
+            <p>We are pleased to inform you that your appointment has been successfully booked. Below are the
+                details:
+            </p>
+        </div>
         <table>
             <tr>
-                <th>Appointment Date</th>
+                <th>Date</th>
                 <td>{{date}}</td>
             </tr>
             <tr>
-                <th>Appointment Time</th>
+                <th>Time</th>
                 <td>{{time}}</td>
             </tr>
             <tr>
@@ -70,9 +98,14 @@
                 <td>11:00 A.M.- 08:00 P.M.</td>
             </tr>
         </table>
-        <p>Thank you for choosing our service. If you have any questions or need to make changes to your appointment,
-            please don't hesitate to contact us.</p>
-        <p>Best regards,<br />ALUKAS & CO</p>
+        <div class="p-20">
+            <p>Thank you for choosing our service. If you have any questions or need to make changes to your
+                appointment,
+                please don't hesitate to contact us.</p>
+        </div>
+        <div class="footer">
+            <p>© 2024 Your Company. All rights reserved.</p>
+        </div>
     </div>
 </body>
 

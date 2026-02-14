@@ -9,8 +9,8 @@ class validation {
             title: joi.string().required(),
             description: joi.string(),
             url: joi.string().allow(),
-            type: joi.string().required(),
             slug: joi.string(),
+            createdBy: joi.string(),
             image: joi.string().allow(),
         })
     };
@@ -20,6 +20,7 @@ class validation {
      */
     static update = {
         body: joi.object().keys({
+            createdBy: joi.string(),
             title: joi.string(),
             url: joi.string().allow(),
             description: joi.string(),
@@ -28,4 +29,5 @@ class validation {
         })
     };
 }
+
 export default validation;

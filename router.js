@@ -6,6 +6,7 @@ import paymentRoute from "./features/payment/route.js";
 import wishlistRoute from "./features/wishlist/route.js";
 import videoCallRoute from "./features/videoCall/route.js";
 import cartRoute from "./features/cart/route.js";
+import returnOrderRoute from "./features/returnOrder/route.js";
 import orderRoute from "./features/orders/route.js";
 import categoryRoute from "./features/master/category/route.js";
 import subcategoryRoute from "./features/master/subCategory/route.js";
@@ -20,6 +21,10 @@ import aboutUsRoute from "./features/master/aboutUs/route.js";
 import couponRoute from "./features/master/coupon/route.js";
 import filterRoute from "./features/master/filters/route.js";
 import invoiceRoute from "./features/master/invoice/route.js";
+import dashboardRoute from "./features/master/dashboard/route.js";
+import priceRoute from "./features/master/price/route.js";
+import homeRoute from "./features/master/home/route.js";
+import taxRoute from "./features/master/tax/route.js";
 
 export {
     authRoute,
@@ -32,6 +37,7 @@ export {
     wishlistRoute,
     cartRoute,
     orderRoute,
+    returnOrderRoute,
 
     blogRoute,
     faqRoute,
@@ -44,5 +50,9 @@ export {
     aboutUsRoute,
     couponRoute,
     filterRoute,
-    invoiceRoute
+    invoiceRoute,
+    dashboardRoute,
+    priceRoute,
+    homeRoute,
+    taxRoute
 };

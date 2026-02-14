@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import {errorResponse,successResponse} from "../../helper/apiResponse.js";
 import {paginationDetails,paginationFun} from "../../helper/common.js";
 import {sendMail} from "../../helper/email.js";
@@ -33,11 +34,12 @@ class controller {
     static get = async (req,res) => {
         try {
             const {id} = req.params;
-            const {status} = req.query;
+            const {status,approvedBy} = req.query;
 
             const filter = {};
 
-            if (id) filter._id = id;
+            if (id) filter._id = new mongoose.Types.ObjectId(id);
+            if (approvedBy) filter.approvedBy = new mongoose.Types.ObjectId(approvedBy);
             if (status) filter.status = {$regex: status,$options: "i"};
 
             const pagination = paginationFun(req.query);
@@ -71,10 +73,11 @@ class controller {
      * update appointment
      */
     static update = async (req,res) => {
+        const {id} = req.params;
+        const userId = req.user._id;
         try {
-            const {id} = req.params;
             const {date,time,status} = req.body;
-            const doc = {date,time,status};
+            const doc = {date,time,status,approvedBy: userId};
 
             const existingAppointment = await Service.existingApp(id);
             const name = existingAppointment.name;

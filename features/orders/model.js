@@ -1,10 +1,9 @@
 import mongoose from "mongoose";
-import {orderStatusEnum} from "../../config/enum.js";
+import {orderStatusEnum,paymentMethodEnum} from "../../config/enum.js";
 
 /**Address schema */
 const addressSchema = new mongoose.Schema({
-    firstName: {type: String},
-    lastName: {type: String},
+    name: {type: String},
     phoneNumber: {type: Number},
     email: {type: String},
     addressLine1: {type: String},
@@ -23,7 +22,9 @@ const cartItemSchema = new mongoose.Schema(
         size: {type: Number},
         price: {type: Number},
         unitPrice: {type: Number},
-        savedAmount: {type: Number,default: 0}
+        savedAmount: {type: Number,default: 0},
+        taxAmount: {type: Number},
+        withoutDiscountPrice: {type: Number}
     }
 );
 
@@ -35,6 +36,7 @@ const mongooseSchema = new mongoose.Schema(
         user: {type: mongoose.Schema.Types.ObjectId,ref: "user"},
         items: [ cartItemSchema ],
         totalAmount: {type: Number},
+        savedAmount: {type: Number},
         sameAsShippingAddress: {type: Boolean,default: true},
         shippingAddress: addressSchema,
         billingAddress: addressSchema,
@@ -44,6 +46,13 @@ const mongooseSchema = new mongoose.Schema(
         couponCode: {type: mongoose.Schema.Types.ObjectId,ref: "coupon"},
         cart: {type: mongoose.Schema.Types.ObjectId,ref: "cart"},
         couponDiscount: {type: Number},
+        totalSaving: {type: Number},
+        isApplicable: {type: Boolean,default: false},
+        sellBy: {type: mongoose.Schema.Types.ObjectId,ref: "user"},
+        isPaid: {type: Boolean,default: false},
+        paymentMethod: {type: String,enum: Object.values(paymentMethodEnum)},
+        totalTaxAmount: {type: Number},
+        withoutDiscountPrice: {type: Number},
     },
     {
         timestamps: true,

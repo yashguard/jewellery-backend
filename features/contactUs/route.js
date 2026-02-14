@@ -13,10 +13,6 @@ const route = express.Router();
  */
 route.post(
     "/",
-    verifyToken,
-    checkPermission([
-        userRoleEnum.CUSTOMER
-    ]),
     validate(validation.create),
     controller.create
 );
@@ -32,6 +28,20 @@ route.get(
         userRoleEnum.MANAGER
     ]),
     controller.get
+);
+
+/**
+ * Update
+ */
+route.patch(
+    "/:id",
+    verifyToken,
+    checkPermission([
+        userRoleEnum.ADMIN,
+        userRoleEnum.MANAGER
+    ]),
+    validate(validation.update),
+    controller.updateStatus
 );
 
 /**

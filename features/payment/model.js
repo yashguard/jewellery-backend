@@ -12,7 +12,8 @@ const mongooseSchema = new mongoose.Schema(
             ref: "order"
         },
         paymentId: {
-            type: String
+            type: String,
+            default: null
         },
         amount: {
             type: Number,

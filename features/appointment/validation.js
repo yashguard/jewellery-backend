@@ -1,15 +1,10 @@
 import joi from "joi";
+import {appointmentStatusEnum} from "../../config/enum.js";
 
 class validation {
     /**
-     * create appointment
+     * create
      */
-    /**
-* create
-*/
-    /**
-* create
-*/
     static create = {
         body: joi.object().keys({
             name: joi.string().required(),
@@ -18,13 +13,10 @@ class validation {
             date: joi.date().required(),
             time: joi.string().required(),
             message: joi.string().required(),
-            status: joi.string(),
+            status: joi.string().valid(...Object.values(appointmentStatusEnum)),
         })
     };
 
-    /**
-     * update appointment
-     */
     /**
      * update
      */
@@ -32,7 +24,7 @@ class validation {
         body: joi.object().keys({
             date: joi.date(),
             time: joi.string(),
-            status: joi.string(),
+            status: joi.string().valid(...Object.values(appointmentStatusEnum)),
         })
     };
 }

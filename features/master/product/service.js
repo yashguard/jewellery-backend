@@ -18,16 +18,15 @@ class Services {
             .limit(pagination.limit)
             .populate({
                 path: 'subCategory',
-                select: '_id title type description url'
+                select: '_id title type description url slug'
             })
             .populate({
                 path: 'category',
-                select: '_id type title description url'
+                select: '_id type title description url slug'
             })
-            .select('files name description discount grandTotal title slug')
+            .select('files name description discount grandTotal title slug discountValue label tag totalCost')
             .exec();
     };
-
 
     /**
      * get by admin
@@ -39,13 +38,13 @@ class Services {
             .limit(pagination.limit)
             .populate({
                 path: 'subCategory',
-                select: '_id title slug type description url'
+                select: '_id title slug type description url slug'
             })
             .populate({
                 path: 'category',
-                select: '_id type slug description url'
+                select: '_id type slug description url slug'
             })
-            .select('sku title description isDraft availability quantity hasVariant slug sales ')
+            .select('sku title description isDraft availability quantity hasVariant slug sales totalCost grandTotal')
             .exec();
     };
 

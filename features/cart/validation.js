@@ -12,15 +12,20 @@ class validate {
                     quantity: joi.number().integer().min(1),
                     size: joi.number(),
                     price: joi.number(),
+                    taxAmount: joi.number(),
                     unitPrice: joi.number(),
-                    savedAmount: joi.number()
+                    savedAmount: joi.number(),
+                    withoutDiscountPrice: joi.number()
                 })
             ),
             count: joi.number(),
+            withoutDiscountPrice: joi.number(),
             subTotal: joi.number(),
+            savedAmount: joi.number(),
             couponCode: joi.string(),
             couponDiscount: joi.number(),
-            totalCost: joi.number()
+            totalCost: joi.number(),
+            totalSaving: joi.number()
         })
     };
 

@@ -8,7 +8,8 @@ class validation {
         body: joi.object().keys({
             title: joi.string().required(),
             description: joi.string().required(),
-            images: joi.array().allow()
+            images: joi.array().allow(),
+            createdBy: joi.string()
         })
     };
 
@@ -17,6 +18,7 @@ class validation {
      */
     static update = {
         body: joi.object().keys({
+            createdBy: joi.string(),
             title: joi.string(),
             description: joi.string(),
             image: joi.string().allow()

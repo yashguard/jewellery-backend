@@ -13,11 +13,22 @@ class controller {
     static create = async (req,res) => {
         try {
             let slug;
-            const {title,description,type} = req.body;
+            const userId = req.user._id;
+            const {title,description} = req.body;
+
+            const existingTitle = await CategoryModel.findOne({title: title});
+            if (existingTitle) {
+                return errorResponse({
+                    res,
+                    statusCode: 400,
+                    error: Error("This title is already in use by another category.")
+                });
+            }
+
             let url = await uploadSingleFile(req,folderName);
 
             slug = slugify(title,{lower: true});
-            const doc = {title,description,type,url,slug};
+            const doc = {title,description,url,slug,createdBy: userId};
             const result = await services.create(doc);
             return successResponse({
                 res,
@@ -40,12 +51,13 @@ class controller {
     static get = async (req,res) => {
         try {
             const {id} = req.params;
-            const {title,slug} = req.query;
+            const {title,slug,createdBy} = req.query;
 
             let filter = {};
             if (id) filter._id = new mongoose.Types.ObjectId(id);
+            if (createdBy) filter.createdBy = new mongoose.Types.ObjectId(createdBy);
             if (title) filter.title = {$regex: title,$options: "i"};
-            if (slug) filter.slug = {$regex: slug,$options: "i"};
+            if (slug) filter.slug = {$regex: new RegExp(`^${ slug }$`,'i')};
             const results = await services.get(filter);
             return successResponse({
                 res,
@@ -68,6 +80,7 @@ class controller {
     static update = async (req,res) => {
         try {
             const {id} = req.params;
+            const userId = req.user._id;
             const {title,description} = req.body;
             let slug;
 
@@ -82,7 +95,7 @@ class controller {
 
             if (slug) {slugify(title,{lower: true});}
             let newUrl = await updateFile(req,findDoc,folderName);
-            const updateFields = {title,description,slug,url: newUrl};
+            const updateFields = {title,description,slug,url: newUrl,createdBy: userId};
             const result = await services.update(id,updateFields);
             return successResponse({
                 res,

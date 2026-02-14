@@ -1,89 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Order Delivered</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            color: #333;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f6eff6;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        color: #333;
+      }
 
-        .container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #F6EFF6;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
 
-        h1 {
-            color: #1F1A5E;
-        }
+      p {
+        margin: 0;
+        line-height: 2;
+        color: #605d92;
+      }
 
-        p {
-            margin: 0;
-            color: #605D92;
-        }
+      .header {
+        background-color: #1f1a5e;
+        color: #ffffff;
+        padding: 1px;
+        text-align: center;
+      }
 
-        .logo {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
 
-        .logo img {
-            max-width: 150px;
-        }
+      th,
+      td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+        color: #1f1a5e;
+        line-height: 1;
+      }
 
-        .message {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+      th {
+        width: 25%;
+        background-color: #f4f4f4;
+        border-right: 1px solid #ddd;
+        color: #1f1a5e;
+      }
 
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #1F1A5E;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+      .message {
+        text-align: left;
+        margin: 30px 10px;
+      }
 
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 12px;
-            color: #777;
-        }
+      .footer {
+        background-color: #f4f4f4;
+        color: #666666;
+        padding: 20px;
+        text-align: center;
+        border-top: 1px solid #dddddd;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="logo">
-            <img src="https://guardianshot.blr1.digitaloceanspaces.com/journeystamp/blogs/fb9de33a-a829-4ee7-973b-1be8867c2f23.png"
-                alt="Your Logo">
-        </div>
-        <div class="message">
-            <h1>Your Order Has Been Delivered!</h1>
-            <p>Dear {{name}},</p>
-            <p>We are pleased to inform you that your order {{order}} has been successfully delivered.</p>
-        </div>
-        <div class="button-container" style="text-align: center;">
-            <a href="[Link to Order Details]" class="button">View Order Details</a>
-        </div>
-        <div class="footer">
-            <p>If you have any questions or concerns, please feel free to contact us at [Your Contact Information].</p>
-            <p>This is an automated email. Please do not reply.</p>
-        </div>
+      <div class="header">
+        <h1>ALUKAS & CO</h1>
+      </div>
+      <div class="message">
+        <h3 style="color: #1f1a5e; font-weight: 600">Dear {{name}},</h3>
+        <p>
+          We are pleased to inform you that your order {{order}} has been
+          successfully delivered.
+        </p>
+      </div>
+      <table>
+        <tr>
+          <th>Name</th>
+          <td>{{name}}</td>
+        </tr>
+        <tr>
+          <th>Order Id</th>
+          <td>{{order}}</td>
+        </tr>
+        <tr>
+          <th>Date</th>
+          <td>{{convertDate}}</td>
+        </tr>
+        <tr>
+          <th>Order details</th>
+          <td>
+            <a href="http://206.189.129.0:5173/account-details/order-history"
+              >View Order Details</a
+            >
+          </td>
+        </tr>
+      </table>
+      <div class="message">
+        <p>
+          We hope you enjoy your purchase. If you have any questions or
+          concerns, please do not hesitate to
+          <a href="http://206.189.129.0:5173/account-details/contact-us"
+            >contact us.</a
+          >
+        </p>
+        <p>Thank you for shopping with ALUKAS & CO.</p>
+        <p>Best regards,</p>
+        <p>The ALUKAS & CO Team</p>
+      </div>
+      <div class="footer">
+        <p>© 2024 Your Company. All rights reserved.</p>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>

@@ -16,8 +16,21 @@ class controller {
    */
   static create = async (req,res) => {
     try {
-      const {title,video,description,html} = req.body;
+      const userId = req.user._id;
+      const {title,video,description,html,type} = req.body;
+
+      if (title) {
+        const findTitle = await BlogModel.findOne({title: title});
+        if (findTitle) {
+          return errorResponse({
+            res,
+            error: Error("This title is already in use by another blog.")
+          });
+        }
+      }
+
       let url = await uploadSingleFile(req,folderName);
+      let htmlContent;
 
       const md = markdownIt({
         html: true,
@@ -26,9 +39,8 @@ class controller {
       });
 
       let slug = slugify(title,{lower: true});
-      const htmlContent = md.render(html);
-
-      const doc = {title,html: htmlContent,video,url,description,slug};
+      if (html) htmlContent = md.render(html);
+      const doc = {title,html: htmlContent,video,url,description,slug,postBy: userId,type};
       const result = await Services.create(doc);
 
       return successResponse({
@@ -48,9 +60,13 @@ class controller {
   static get = async (req,res) => {
     try {
       const {id} = req.params;
+      const {type,slug} = req.query;
 
       let filter = {};
       if (id) filter._id = new mongoose.Types.ObjectId(id);
+      if (type) filter.type = {$regex: new RegExp(`^${ type }$`,'i')};
+      if (slug) filter.slug = {$regex: new RegExp(`^${ slug }$`,'i')};
+
       const pagination = paginationFun(req.query);
       let count,paginationData;
 
@@ -86,9 +102,14 @@ class controller {
   static getDetails = async (req,res) => {
     try {
       const {id} = req.params;
+      const {title,type,slug} = req.query;
 
       let filter = {};
       if (id) filter._id = new mongoose.Types.ObjectId(id);
+      if (title) filter.title = {$regex: title,$options: "i"};
+      if (type) filter.type = {$regex: new RegExp(`^${ type }$`,'i')};
+      if (slug) filter.slug = {$regex: new RegExp(`^${ slug }$`,'i')};
+
       const pagination = paginationFun(req.query);
       let count,paginationData;
 
@@ -119,6 +140,7 @@ class controller {
   static patch = async (req,res) => {
     try {
       const {id} = req.params;
+      const userId = req.user._id;
       const {title,video,description,html} = req.body;
 
       const findDoc = await BlogModel.findById(id);
@@ -141,7 +163,7 @@ class controller {
       if (slug) slugify(title,{lower: true});
       if (html) {htmlContent = md.render(html);}
 
-      const doc = {title,video,description,html: htmlContent,url: newUrl,slug};
+      const doc = {title,video,description,html: htmlContent,url: newUrl,slug,postBy: userId};
       const result = await Services.patch(id,doc);
       return successResponse({
         res,
@@ -167,9 +189,11 @@ class controller {
         });
       }
 
-      await deleteFile({
-        filename: existingBlog.url,
-      });
+      if (existingBlog.url) {
+        await deleteFile({
+          filename: existingBlog.url,
+        });
+      }
 
       await Services.deleteBlog(res,id);
     } catch (error) {

@@ -3,8 +3,8 @@ import {deleteFile} from "../../helper/aws_s3.js";
 import {paginationDetails,paginationFun} from "../../helper/common.js";
 import ProductReviewModel from "../productReview/model.js";
 import ProductModel from "../master/product/model.js";
-import mongoose from "mongoose";
 import {uploadMultipleFiles} from "../aws/controller.js";
+import mongoose from "mongoose";
 const folderName = "reviews";
 
 class controller {
@@ -28,11 +28,13 @@ class controller {
 
             const uploadedImages = await uploadMultipleFiles(req,folderName);
             const result = await ProductReviewModel.create({files: uploadedImages.map((image) => ({urls: image.url})),product,rating,title,message,user: userId});
+            const populateData = await ProductReviewModel.findById(result._id)
+                .populate({path: "user", select: "username email url"})
 
             return successResponse({
                 res,
                 statusCode: 201,
-                data: result,
+                data: populateData,
                 message: "Your review is added successfully. Thank you !"
             });
         } catch (error) {
@@ -50,45 +52,31 @@ class controller {
     static get = async (req,res) => {
         try {
             const {id} = req.params;
-            const {product,sort} = req.query;
+            const {search,product} = req.query;
 
             let filter = {};
-            if (id) filter._id = id;
+            if (id) filter._id = new mongoose.Types.ObjectId(id);
             if (product) filter.product = new mongoose.Types.ObjectId(product);
+            if (search) {
+                filter.$or = [
+                    {title: {$regex: new RegExp(search,'i')}},
+                    {message: {$regex: new RegExp(search,'i')}}
+                ];
 
-            const pagination = paginationFun(req.query);
-            let count,paginationData;
-
-            count = await ProductReviewModel.countDocuments(filter);
-
-            /**sort data */
-            let sortStage = {};
-            if (sort) {
-                sortStage = {};
-                if (sort === "rate_asc") {
-                    sortStage.rating = -1;
-                } else if (sort === "rate_dec") {
-                    sortStage.rating = 1;
-                } else if (sort === "newest") {
-                    sortStage.createdAt = -1;
+                const parsedRating = parseFloat(search);
+                if (!isNaN(parsedRating)) {
+                    filter.$or.push({rating: parsedRating});
                 }
-            } else {
-                sortStage = {createdAt: -1};
             }
 
+            const pagination = paginationFun(req.query);
+            const count = await ProductReviewModel.countDocuments(filter);
+
             const result = await ProductReviewModel.aggregate([
-                {
-                    $match: filter
-                },
-                {
-                    $sort: sortStage
-                },
-                {
-                    $skip: pagination.skip
-                },
-                {
-                    $limit: pagination.limit
-                },
+                {$match: filter},
+                {$sort: {createdAt: -1}},
+                {$skip: pagination.skip},
+                {$limit: pagination.limit},
                 {
                     $lookup: {
                         from: "products",
@@ -120,7 +108,14 @@ class controller {
                 {
                     $project: {
                         "product._id": 1,
+                        "product.slug": 1,
+                        "product.title": 1,
+                        "product.files": 1,
+                        "product.sku": 1,
                         "user.username": 1,
+                        "user.customerId": 1,
+                        "user.email": 1,
+                        "user.url": 1,
                         "title": 1,
                         "message": 1,
                         "files": 1,
@@ -131,7 +126,7 @@ class controller {
                 }
             ]);
 
-            paginationData = paginationDetails({
+            const paginationData = paginationDetails({
                 limit: pagination.limit,
                 page: req.query.page,
                 totalItems: count,

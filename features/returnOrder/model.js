@@ -15,9 +15,14 @@ const mongooseSchema = new mongoose.Schema(
         reason: {
             type: String
         },
+        manageBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "user"
+        },
         status: {
             type: String,
-            enum: Object.values(returnOrderStatusEnum)
+            enum: Object.values(returnOrderStatusEnum),
+            default: returnOrderStatusEnum.REQUESTED
         }
     },
     {

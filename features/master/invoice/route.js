@@ -4,12 +4,21 @@ import controller from "../invoice/controller.js";
 const route = express.Router();
 
 /**
- * get invoice
+ * Get details
  */
 route.get(
-    "/:id?",
+    "/details/:id?",
     verifyToken,
     controller.get
+);
+
+/**
+ * Get
+ */
+route.get(
+    "/get/:id?",
+    verifyToken,
+    controller.getInvoiceList
 );
 
 export default route;

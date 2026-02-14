@@ -33,7 +33,7 @@ export const errorResponse = async ({
   }
   if (error.name === "MongoServerError" && error.code === 11000) {
     message = "Document already exists.";
-    statusCode = 400;
+    statusCode = 409;
   }
   if (error.error) {
     if (error.error.step === "payment_initiation" && error.error.code === "BAD_REQUEST_ERROR" && error.error.field === "amount") {

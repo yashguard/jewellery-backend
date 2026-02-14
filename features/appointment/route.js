@@ -9,7 +9,7 @@ import {userRoleEnum} from "../../config/enum.js";
 const route = Express.Router();
 
 /**
- * create appointment 
+ * create 
  */
 route.post(
     "/",
@@ -22,7 +22,7 @@ route.post(
 );
 
 /**
- * get appointment
+ * get
  */
 route.get(
     "/:id?",
@@ -35,7 +35,7 @@ route.get(
 );
 
 /**
- * update appointment status 
+ * update 
  */
 route.patch(
     "/:id",

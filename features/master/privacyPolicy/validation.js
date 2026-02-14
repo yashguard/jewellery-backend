@@ -8,8 +8,8 @@ class validation {
             shortDescription: joi.string().required(),
             longDescription: joi.string(),
             type: joi.string().required(),
+            createdBy: joi.string()
         })
-
     };
 
     /**update */
@@ -17,7 +17,8 @@ class validation {
         body: joi.object().keys({
             title: joi.string(),
             shortDescription: joi.string(),
-            longDescription: joi.string()
+            longDescription: joi.string(),
+            createdBy: joi.string()
         })
     };
 }

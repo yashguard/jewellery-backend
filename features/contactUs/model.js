@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import {contactStatusEnum} from "../../config/enum.js";
 
 /**PUBLIC - contact-us schema */
 const mongooseSchema = new mongoose.Schema(
@@ -14,6 +15,11 @@ const mongooseSchema = new mongoose.Schema(
         },
         message: {
             type: String
+        },
+        status: {
+            type: String,
+            enum: Object.values(contactStatusEnum),
+            default: contactStatusEnum.PENDING,
         }
     },
     {

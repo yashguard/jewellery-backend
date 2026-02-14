@@ -4,6 +4,7 @@ import {deleteFile} from "../../../helper/aws_s3.js";
 import Service from "../aboutUs/service.js";
 import AboutUsModel from './model.js';
 import {updateFile,uploadSingleFile} from '../../aws/controller.js';
+import mongoose from "mongoose";
 const folderName = "aboutUs";
 
 class controller {
@@ -12,10 +13,11 @@ class controller {
      */
     static createTeam = async (req,res) => {
         try {
+            const userId = req.user._id;
             const {type,name,designation,media,link,mediaType} = req.body;
             let url = await uploadSingleFile(req,folderName);
 
-            const doc = {type,name,designation,media,link,mediaType,url};
+            const doc = {type,name,designation,media,link,mediaType,url,createdBy: userId};
             const result = await Service.createTeam(doc);
             return successResponse({
                 res,
@@ -37,10 +39,11 @@ class controller {
      */
     static createPercentage = async (req,res) => {
         try {
+            const userId = req.user._id;
             const {type,description,scoreTitle,scores,isProgress,symbol,number,headTitle} = req.body;
             let url = await uploadSingleFile(req,folderName);
 
-            const doc = {type,description,scoreTitle,symbol,number,scores,isProgress,headTitle,url};
+            const doc = {type,description,scoreTitle,symbol,number,scores,isProgress,headTitle,url,createdBy: userId};
             const result = await Service.createPercentage(doc);
             return successResponse({
                 res,
@@ -62,8 +65,9 @@ class controller {
      */
     static uploadVideo = async (req,res) => {
         try {
+            const userId = req.user._id;
             let url = await uploadSingleFile(req,folderName);
-            const result = await AboutUsModel.create({url});
+            const result = await AboutUsModel.create({url,createdBy: userId});
             return successResponse({
                 res,
                 statusCode: 201,
@@ -81,11 +85,12 @@ class controller {
     static get = async (req,res) => {
         try {
             const {id} = req.params;
-            const {type} = req.query;
+            const {type,createdBy} = req.query;
 
             const filter = {};
             if (id) filter.id = id;
             if (type) filter.type = {$regex: type,$options: "i"};
+            if (createdBy) filter.createdBy = new mongoose.Types.ObjectId(createdBy);
 
             const result = await Service.get(filter);
             return successResponse({
@@ -109,6 +114,7 @@ class controller {
     static update = async (req,res) => {
         try {
             const {id} = req.params;
+            const userId = req.user._id;
             const {scores,scoreTitle,isProgress,symbol,number,media,link,mediaType,description,name,designation,headTitle} = req.body;
 
             const findDoc = await Service.findDoc(id);
@@ -122,7 +128,7 @@ class controller {
             const doc = {
                 description,scoreTitle,url: newUrl,name,designation,media,link,mediaType,isProgress,symbol,number,
                 scores: scores ? [ ...findDoc.scores,...scores ] : findDoc.scores,headTitle,
-                media: media ? [ ...findDoc.media,...media ] : findDoc.media,
+                media: media ? [ ...findDoc.media,...media ] : findDoc.media,createdBy: userId
             };
             const result = await Service.update(id,doc);
             return successResponse({

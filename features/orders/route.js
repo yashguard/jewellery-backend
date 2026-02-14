@@ -14,6 +14,9 @@ const route = express.Router();
 route.post(
     "/:id",
     verifyToken,
+    checkPermission([
+        userRoleEnum.CUSTOMER
+    ]),
     validate(validation.update),
     controller.update
 );
@@ -38,6 +41,19 @@ route.patch(
     ]),
     validate(validation.updateStatus),
     controller.updateStatus
+);
+
+/**
+ * Add payment method
+ */
+route.post(
+    "/:id/payment",
+    verifyToken,
+    checkPermission([
+        userRoleEnum.CUSTOMER
+    ]),
+    validate(validation.addPaymentMethod),
+    controller.addPaymentMethod
 );
 
 export default route;

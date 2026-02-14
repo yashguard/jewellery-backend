@@ -11,9 +11,10 @@ const route = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({storage: storage});
 
-/**
- * register
- */
+// ----------------------
+// POST
+// ----------------------
+
 route.post(
     "/register",
     upload.single("image"),
@@ -21,53 +22,81 @@ route.post(
     controller.register
 );
 
-/**
- * login 
- */
+route.post(
+    "/addStaff",
+    verifyToken,
+    checkPermission([
+        userRoleEnum.ADMIN,
+        userRoleEnum.MANAGER
+    ]),
+    validate(validation.addStaff),
+    controller.addStaff
+);
+
 route.post(
     "/login",
     validate(validation.login),
     controller.login
 );
 
-/**
- * verify token
- */
 route.post(
     "/verifyToken",
     controller.verifyToken
 );
 
-/**
- * login with google
- */
 route.post(
     "/google/login",
     validate(validation.googleLogin),
     controller.googleLogin
 );
 
-/**
- * forgot password
- */
 route.post(
     "/forgot-password",
     validate(validation.forgotPassword),
     controller.forgotPassword
 );
 
-/**
- * reset password
- */
+route.post(
+    "/verifyOtp",
+    validate(validation.otpVerification),
+    controller.otpVerification
+);
+
+route.post(
+    "/resendOtp",
+    controller.resendOTP
+);
+
+// ----------------------
+// PATCH
+// ----------------------
+
 route.patch(
     "/resetPassword",
     validate(validation.resetPassword),
     controller.resetPassword
 );
 
-/**
- * get all users by admin
- */
+route.patch(
+    "/:id",
+    upload.single("image"),
+    verifyToken,
+    validate(validation.updateUserValidation),
+    controller.updateUserController
+);
+
+route.patch(
+    "/:id/role",
+    verifyToken,
+    validate(validation.updateByAdmin),
+    checkPermission([ userRoleEnum.ADMIN ]),
+    controller.updateRole
+);
+
+// ----------------------
+// GET
+// ----------------------
+
 route.get(
     "/admin/:id?",
     verifyToken,
@@ -78,52 +107,52 @@ route.get(
     controller.getAllUsers
 );
 
-/**
- * get customer
- */
 route.get(
     "/customer/:id?",
     verifyToken,
-    controller.get
+    controller.getCustomer
 );
 
-/**
- * update user with change password
- */
-route.patch(
-    "/:id",
-    upload.single("image"),
+route.get(
+    "/details/:id?",
     verifyToken,
-    validate(validation.updateUserValidation),
-    controller.updateUserController
+    checkPermission([
+        userRoleEnum.ADMIN,
+        userRoleEnum.MANAGER,
+        userRoleEnum.SELLER,
+        userRoleEnum.PRODUCTMANAGER,
+        userRoleEnum.CONTENTEDITOR,
+        userRoleEnum.CUSTOMERSERVICE
+    ]),
+    controller.customerDetails
 );
 
-/**
- * update role
- */
-route.patch(
-    "/:id/role",
+route.get(
+    "/staff",
     verifyToken,
-    validate(validation.updateByAdmin),
-    checkPermission([ userRoleEnum.ADMIN ]),
-    controller.updateRole
+    // checkPermission([
+    //     userRoleEnum.ADMIN,
+    //     userRoleEnum.MANAGER,
+    //     userRoleEnum.SELLER,
+    //     userRoleEnum.PRODUCTMANAGER,
+    //     userRoleEnum.CONTENTEDITOR,
+    //     userRoleEnum.CUSTOMERSERVICE
+    // ]),
+    controller.getStaff
 );
 
-/**
- * otp verification
- */
-route.post(
-    "/verifyOtp",
-    validate(validation.otpVerification),
-    controller.otpVerification
-);
-
-/**
- * resend otp verification 
- */
-route.post(
-    "/resendOtp",
-    controller.resendOTP
+route.get(
+    "/staff-details/:id?",
+    verifyToken,
+    checkPermission([
+        userRoleEnum.ADMIN,
+        userRoleEnum.MANAGER,
+        userRoleEnum.SELLER,
+        userRoleEnum.PRODUCTMANAGER,
+        userRoleEnum.CONTENTEDITOR,
+        userRoleEnum.CUSTOMERSERVICE
+    ]),
+    controller.staffDetails
 );
 
 export default route;

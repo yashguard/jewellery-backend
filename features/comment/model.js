@@ -24,5 +24,5 @@ const mongooseSchema = mongoose.Schema(
 );
 
 mongooseSchema.index({blog: 1});
-const CommentModel = new mongoose.model("comment",mongooseSchema);
+const CommentModel = mongoose.model("comment",mongooseSchema);
 export default CommentModel;

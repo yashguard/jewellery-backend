@@ -4,21 +4,23 @@ class validate {
     static create = {
         body: Joi.object().keys({
             code: Joi.string().required(),
-            minimumSpend: Joi.number().required(),
             description: Joi.string().required(),
             discountType: Joi.string().required(),
             discountValue: Joi.number().required(),
-            expiredTime: Joi.date(),
+            endDate: Joi.date(),
+            isActive: Joi.boolean().default(false),
             validAmount: Joi.number().required(),
-            savedAmount: Joi.number()
+            savedAmount: Joi.number(),
+            createdBy: Joi.string()
         })
     };
 
     static update = {
         body: Joi.object().keys({
-            minimumSpend: Joi.number(),
             description: Joi.string(),
-            expiredTime: Joi.date()
+            endDate: Joi.date(),
+            isActive: Joi.boolean(),
+            createdBy: Joi.string()
         })
     };
 }
