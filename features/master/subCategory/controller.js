@@ -5,7 +5,7 @@ import CategoryModel from "../category/model.js";
 import services from "../subCategory/service.js";
 import { paginationDetails, paginationFun } from "../../../helper/common.js";
 import slugify from "slugify";
-import { updateFile, uploadSingleFile } from "../../aws/controller.js";
+import { updateFile, uploadSingleFile } from "../../cloudinary/controller.js";
 const folderName = "subCategory";
 
 class controller {

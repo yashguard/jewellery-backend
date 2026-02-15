@@ -3,10 +3,10 @@ import markdownIt from "markdown-it";
 import {errorResponse,successResponse} from "../../../helper/apiResponse.js";
 import {paginationDetails,paginationFun} from "../../../helper/common.js";
 import Services from "../blog/service.js";
-import {deleteFile} from "../../../helper/aws_s3.js";
+import {deleteFile} from "../../../helper/cloudinary.js";
 import CommentModel from '../../comment/model.js';
 import mongoose from 'mongoose';
-import {updateFile,uploadSingleFile} from "../../aws/controller.js";
+import {updateFile,uploadSingleFile} from "../../cloudinary/controller.js";
 import slugify from 'slugify';
 const folderName = "blog";
 

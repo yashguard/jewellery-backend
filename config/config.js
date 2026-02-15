@@ -30,6 +30,15 @@ const envVarsSchema = Joi.object({
   GOOGLE_CLIENT_SECRET: Joi.string().description("google client secret"),
   GOOGLE_REDIRECT_URL: Joi.string().description("google redirect url"),
 
+  CLOUDINARY_CLOUD_NAME: Joi.string().description("cloudinary cloud name"),
+  CLOUDINARY_API_KEY: Joi.string().description("cloudinary api key"),
+  CLOUDINARY_API_SECRET: Joi.string().description("cloudinary api secret"),
+  CLOUDINARY_FOLDER_NAME: Joi.string().description("cloudinary folder name"),
+
+  ADMIN_EMAIL: Joi.string().description("administrator email"),
+
+  // ============================================================
+
   RAZORPAY_KEY_ID: Joi.string().description("razorpay key id"),
   RAZORPAY_KEY_SECRET: Joi.string().description("razorpay key secret"),
 
@@ -51,8 +60,6 @@ const envVarsSchema = Joi.object({
   DIGITAL_OCEAN_BUCKET_NAME: Joi.string().description(
     "digital ocean spaces bucket name",
   ),
-
-  ADMIN_EMAIL: Joi.string().description("administrator email"),
 }).unknown();
 
 const { value: envVars, error } = envVarsSchema
@@ -90,16 +97,6 @@ export const config = {
     client_secret: envVars.GOOGLE_CLIENT_SECRET,
     redirect_url: envVars.GOOGLE_REDIRECT_URL,
   },
-  cloud: {
-    digitalocean: {
-      foldername: envVars.DIGITAL_OCEAN_FOLDERNAME,
-      access_key: envVars.DIGITAL_OCEAN_SPACES_ACCESS_KEY,
-      secret_key: envVars.DIGITAL_OCEAN_SPACES_SECRET_KEY,
-      region: envVars.DIGITAL_OCEAN_SPACES_REGION,
-      base_url: envVars.DIGITAL_OCEAN_SPACES_BASE_URL,
-      bucket_name: envVars.DIGITAL_OCEAN_BUCKET_NAME,
-    },
-  },
   email: {
     smtp: {
       host: envVars.SMTP_HOST,
@@ -110,6 +107,23 @@ export const config = {
       },
     },
     from: envVars.EMAIL_FROM,
+  },
+  cloudinary: {
+    cloudName: envVars.CLOUDINARY_CLOUD_NAME,
+    apiKey: envVars.CLOUDINARY_API_KEY,
+    apiSecret: envVars.CLOUDINARY_API_SECRET,
+    cloudFolderName: envVars.CLOUDINARY_FOLDER_NAME,
+  },
+  // ============================================================
+  cloud: {
+    digitalocean: {
+      foldername: envVars.DIGITAL_OCEAN_FOLDERNAME,
+      access_key: envVars.DIGITAL_OCEAN_SPACES_ACCESS_KEY,
+      secret_key: envVars.DIGITAL_OCEAN_SPACES_SECRET_KEY,
+      region: envVars.DIGITAL_OCEAN_SPACES_REGION,
+      base_url: envVars.DIGITAL_OCEAN_SPACES_BASE_URL,
+      bucket_name: envVars.DIGITAL_OCEAN_BUCKET_NAME,
+    },
   },
   razorpay: {
     key_id: envVars.RAZORPAY_KEY_ID,
