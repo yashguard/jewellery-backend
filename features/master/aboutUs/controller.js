@@ -3,7 +3,11 @@ import { errorResponse, successResponse } from "../../../helper/apiResponse.js";
 import { deleteFile } from "../../../helper/cloudinary.js";
 import Service from "../aboutUs/service.js";
 import AboutUsModel from "./model.js";
-import { updateFile, uploadSingleFile } from "../../cloudinary/controller.js";
+import {
+  extractPublicId,
+  updateFile,
+  uploadSingleFile,
+} from "../../cloudinary/controller.js";
 import mongoose from "mongoose";
 const folderName = "aboutUs";
 
@@ -333,8 +337,10 @@ class controller {
         });
       }
 
+      const publicId = extractPublicId(findDoc.url);
+
       await deleteFile({
-        filename: `${config.cloud.digitalocean.foldername}/${folderName}/${findDoc.url}`,
+        filename: publicId,
       });
 
       await Service.delete(id);

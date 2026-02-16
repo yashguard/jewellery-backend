@@ -4,7 +4,7 @@ class validation {
     /**create */
     static create = {
         body: joi.object().keys({
-            taxValue: joi.number().required()
+            taxValue: joi.number().required().default(0)
         })
     };
 }

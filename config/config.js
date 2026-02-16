@@ -41,25 +41,6 @@ const envVarsSchema = Joi.object({
 
   RAZORPAY_KEY_ID: Joi.string().description("razorpay key id"),
   RAZORPAY_KEY_SECRET: Joi.string().description("razorpay key secret"),
-
-  DIGITAL_OCEAN_FOLDERNAME: Joi.string().description(
-    "digitalOcean folder name",
-  ),
-  DIGITAL_OCEAN_SPACES_ACCESS_KEY: Joi.string().description(
-    "digital ocean spaces access key",
-  ),
-  DIGITAL_OCEAN_SPACES_SECRET_KEY: Joi.string().description(
-    "digital ocean spaces secret key",
-  ),
-  DIGITAL_OCEAN_SPACES_REGION: Joi.string().description(
-    "digital ocean spaces region",
-  ),
-  DIGITAL_OCEAN_SPACES_BASE_URL: Joi.string().description(
-    "digital ocean spaces base url",
-  ),
-  DIGITAL_OCEAN_BUCKET_NAME: Joi.string().description(
-    "digital ocean spaces bucket name",
-  ),
 }).unknown();
 
 const { value: envVars, error } = envVarsSchema
@@ -115,16 +96,6 @@ export const config = {
     cloudFolderName: envVars.CLOUDINARY_FOLDER_NAME,
   },
   // ============================================================
-  cloud: {
-    digitalocean: {
-      foldername: envVars.DIGITAL_OCEAN_FOLDERNAME,
-      access_key: envVars.DIGITAL_OCEAN_SPACES_ACCESS_KEY,
-      secret_key: envVars.DIGITAL_OCEAN_SPACES_SECRET_KEY,
-      region: envVars.DIGITAL_OCEAN_SPACES_REGION,
-      base_url: envVars.DIGITAL_OCEAN_SPACES_BASE_URL,
-      bucket_name: envVars.DIGITAL_OCEAN_BUCKET_NAME,
-    },
-  },
   razorpay: {
     key_id: envVars.RAZORPAY_KEY_ID,
     key_secret: envVars.RAZORPAY_KEY_SECRET,

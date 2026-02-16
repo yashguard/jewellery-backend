@@ -4,7 +4,10 @@ import Services from "../home/service.js";
 import HomeModel from "./model.js";
 import mongoose from "mongoose";
 import ProductModel from "../product/model.js";
-import { updateFile, uploadMultipleFiles } from "../../cloudinary/controller.js";
+import {
+  updateFile,
+  uploadMultipleFiles,
+} from "../../cloudinary/controller.js";
 import { config } from "../../../config/config.js";
 import BlogModel from "../blog/model.js";
 import { v4 as uuidv4 } from "uuid";
@@ -176,13 +179,14 @@ class controller {
         const fileExt = originalName.split(".").pop();
         const name = `${uuidv4()}.${fileExt}`;
 
-        await uploadFile({
-          filename: `${config.cloud.digitalocean.foldername}/${name}`,
-          file: file.buffer,
-          ACL: "public-read",
+        const base64File = `data:${file.mimetype};base64,${file.buffer.toString("base64")}`;
+
+        const result = await uploadFile({
+          filename: `${folderName}/${name}`, // no DO folder
+          file: base64File,
         });
 
-        const fileUrl = `${config.cloud.digitalocean.base_url}/${config.cloud.digitalocean.foldername}/${name}`;
+        const fileUrl = result.secure_url;
 
         const newFile = {
           urls: fileUrl,

@@ -73,7 +73,9 @@ class controller {
         metal,
       } = req.body;
 
-      let totalCost, taxValue, taxAmount;
+      let totalCost,
+        taxValue = 0,
+        taxAmount;
       const findCategory = await CategoryModel.findById(category);
       const findSubCate = await SubCategoryModel.findById(subCategory);
 

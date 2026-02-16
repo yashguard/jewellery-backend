@@ -30,7 +30,7 @@ class validation {
             price: Joi.number().integer(),
             grandTotal: Joi.number().integer(),
             subTotal: Joi.number().integer(),
-            taxValue: Joi.number().integer(),
+            taxValue: Joi.number().integer().default(0),
             attributes: Joi.array().items(Joi.object({
                 attTitle: Joi.string().required(),
                 settingType: Joi.string(),

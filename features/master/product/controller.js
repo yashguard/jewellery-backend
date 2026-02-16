@@ -188,6 +188,7 @@ class controller {
       }
 
       const tax = await TaxModel.findOne();
+      console.log({ tax });
       taxValue = tax.taxValue;
       if (taxValue) {
         taxAmount = (subTotal * parseFloat(taxValue)) / 100;
