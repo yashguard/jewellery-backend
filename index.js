@@ -225,7 +225,7 @@ io.on("connection", (socket) => {
             monthlySalesOverviewObj[customer.month - 1].customer =
               customer.customer;
           });
-        }
+        },
       );
 
       const customerOverviewMonthlyCounts = customerOverview.reduce(
@@ -238,7 +238,7 @@ io.on("connection", (socket) => {
           }
           return acc;
         },
-        monthlySalesOverviewObj
+        monthlySalesOverviewObj,
       );
 
       const completedOrdersPercentage =
@@ -725,11 +725,17 @@ io.on("connection", (socket) => {
 app.use(
   cors({
     origin: [config.client_url],
-  })
+  }),
 );
 
 app.use(express.json({ limit: "100mb" }));
 app.use(express.urlencoded({ extended: true }));
+
+// Health Check
+app.use("/api/health", (_, res) => {
+  console.log("Health Check Call");
+  res.status(200).json({ status: "OK", message: "Server is running" });
+});
 
 /**Routes */
 app.use("/api/auth", route.authRoute);
