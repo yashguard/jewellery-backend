@@ -26,7 +26,7 @@ const envVarsSchema = Joi.object({
     "the from field in the emails sent by the app",
   ),
 
-  RESEND_API_KEY: Joi.string().description("resend api key"),
+  SENDGRID_KEY: Joi.string().description("sendgrid api key"),
 
   GOOGLE_CLIENT_ID: Joi.string().description("google client id"),
   GOOGLE_CLIENT_SECRET: Joi.string().description("google client secret"),
@@ -53,9 +53,9 @@ if (error) {
   console.log("Config Error: ", error);
 }
 
-// console.log({
-//     mode: developmentMode,
-// });
+console.log({
+  mode: developmentMode,
+});
 
 export const config = {
   port: envVars.PORT,
@@ -90,8 +90,8 @@ export const config = {
       },
     },
     from: envVars.EMAIL_FROM,
+    sendgridApiKey: envVars.SENDGRID_KEY,
   },
-  resendAPIKey: envVars.RESEND_API_KEY,
   cloudinary: {
     cloudName: envVars.CLOUDINARY_CLOUD_NAME,
     apiKey: envVars.CLOUDINARY_API_KEY,
