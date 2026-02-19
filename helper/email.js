@@ -13,6 +13,7 @@ const mailTransport = nodemailer.createTransport({
     },
 });
 
+
 /**
  * Send mail function
  */
